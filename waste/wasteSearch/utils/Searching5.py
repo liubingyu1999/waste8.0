@@ -12,7 +12,7 @@ from django.apps import apps
 keyAttribute = "固废名称"
 ignoredAttribute = ["废物类别", "行业分类", "固废名称", "别名", "产生工段", "表观形貌(稍微详细)"]
 negativeWords = ["没有", "无"]
-documentAttribute = ["表观形貌关键词", "物理形态", "形状", "颜色", "气味"]
+documentAttribute = ["表观形貌", "物理形态", "形状", "颜色", "气味","表观形貌关键词"]
 useless_label= ["_state","id", "序号","dataId"]
 
 # 存储数据库所有数据
@@ -20,11 +20,11 @@ res_dict = []
 name2index = {}
 categoryName = []
 
-gradeAttribute = {"一级指纹": ["表观形貌关键词", "物理形态", "形状", "颜色", "气味", "密度(kg/m3)", "含水率(%)", "pH", "含油率(%)"],
+gradeAttribute = {"一级指纹": ["表观形貌", "物理形态", "形状", "颜色", "气味", "密度(kg/m3)", "含水率(%)", "pH", "含油率(%)"],
                     "二级指纹": ["COD(mg/L)", "热值(KJ/kg)", "烧失量", "水分", "灰分", "挥发分", "固定碳", "C", "H", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "K", "Ca", "Ti", "V",
                                 "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "As", "Pb", "Ag", "Bi", "Cd", "Sn", "Sb", "I", "Hg", "Ba", "Al2O3", "MgO", "P Cl", "K2O", "Na2O",
                                 "Fe2O3", "SiO2", "MnO", "CaO", "P S", "SO3", "As2O3", "TiO2", "Cr2O3", "CuO", "ZnO", "PbO", "P F", "V2O5", "BaO", "P2O5", "SnO2", "NiO",
-                                "NaCl(%)", "KCl", "MgCl2", "Mg(OH)2", "AlCl3", "MnCl2", "NH4Cl(%)", "TiCl4", "FeCl2", "FeCl3", "CaCl2", "CaF2", "CaSO4", "CaCO3", "P BaO",
+                                "NaCl", "KCl", "MgCl2", "Mg(OH)2", "AlCl3", "MnCl2", "NH4Cl", "TiCl4", "FeCl2", "FeCl3", "CaCl2", "CaF2", "CaSO4", "CaCO3", "P BaO",
                                 "BaSO4", "BaCO3", "BaSiO3", "BaS", "NaOH"],
                     "三级指纹": ['辉铜矿', '黄铜矿', '铜铁硫化相', '铁橄榄石', '磁铁矿', '钙铁辉石', '玻璃相', '石膏', '方解石', '石英', '砷铜矿', '皓矾', '六水锌矾', '氧化锑', '三氧化二砷',
                                 '五氧化二砷', '铅绿矾', '方铅矿', '铅黄', '铅', '密陀僧', '红锌矿', '闪锌矿', '锌', '纤锌矿', '冰晶石', '刚玉', 'β-氧化铝', '钾冰晶石', '铝', '锥冰晶石',
@@ -335,7 +335,7 @@ def document_search(attribute_name, search_text, category_name):
         return document_search_single_element(attribute_name, search_text, category_name)
     elif attribute_name == "气味":
         return document_search_binarization_text_analysis(attribute_name, search_text, category_name)
-    elif attribute_name == "表观形貌关键词" or attribute_name == "颜色":
+    elif attribute_name == "表观形貌" or attribute_name == "颜色":
         return document_search_binarization_multi_element(attribute_name, search_text, category_name)
 
 
@@ -472,8 +472,8 @@ def numerical_search(attribute_name, search_value, category_name):
                                 "L Co", "L Sb", "L Hg", "L Cd", "L Bi", "L Ni", "L Cr ", "L Ag", "L As", "L Se", "L Br", "L V", "L F"]
     percentage_attribute = ["含水率(%)", "含油率(%)", "烧失量", "水分", "灰分", "挥发分", "固定碳", "C", "H", "N", "O", "F", "Na", "Mg", "Al", "Si", "P", "S", "Cl", "K", "Ca", "Ti", "V",
                             "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "As", "Pb", "Ag", "Bi", "Cd", "Sn", "Sb", "I", "Hg", "Ba", "Al2O3", "MgO", "P Cl", "K2O", "Na2O", "Fe2O3",
-                            "SiO2", "MnO", "CaO", "P S", "SO3", "As2O3", "TiO2", "Cr2O3", "CuO", "ZnO", "PbO", "P F", "V2O5", "BaO", "P2O5", "SnO2", "NiO", "NaCl(%)", "KCl",
-                            "MgCl2", "Mg(OH)2", "AlCl3", "MnCl2", "NH4Cl(%)", "TiCl4", "FeCl2", "FeCl3", "CaCl2", "CaF2", "CaSO4", "CaCO3", "P BaO", "BaSO4", "BaCO3", "BaSiO3",
+                            "SiO2", "MnO", "CaO", "P S", "SO3", "As2O3", "TiO2", "Cr2O3", "CuO", "ZnO", "PbO", "P F", "V2O5", "BaO", "P2O5", "SnO2", "NiO", "NaCl", "KCl",
+                            "MgCl2", "Mg(OH)2", "AlCl3", "MnCl2", "NH4Cl", "TiCl4", "FeCl2", "FeCl3", "CaCl2", "CaF2", "CaSO4", "CaCO3", "P BaO", "BaSO4", "BaCO3", "BaSiO3",
                             "BaS", "NaOH", "辉铜矿", "黄铜矿", "铜铁硫化相", "铁橄榄石", "磁铁矿", "钙铁辉石", "玻璃相", "石膏", "方解石", "石英", "砷铜矿", "皓矾", "六水锌矾", "氧化锑",
                             "三氧化二砷", "五氧化二砷", "铅绿矾", "方铅矿", "铅黄", "铅", "密陀僧", "红锌矿", "闪锌矿", "锌", "纤锌矿", "冰晶石", "刚玉", "β-氧化铝", "钾冰晶石", "铝",
                             "锥冰晶石", "西蒙冰晶石", "氟铝钙锂石", "白砷石", "三水胆矾", "副雄黄", "砷华", "铅矾", "块黑铅矿", "四水锌矾", "硒汞矿", "尖晶石", "氮化铝", "方镁石",
@@ -592,7 +592,7 @@ def Matching(search_dict):
     # 文本识别
     attributeWeight = [1, 1, 1]
     # print(search_dict)
-    # allDict = {"物理形态": "半固态", "表观形貌关键词": "板状、光滑、团聚", "含水率": 48.8, "形状": "泥状", "Al2O3": 0.41}
+    # allDict = {"物理形态": "半固态", "表观形貌": "板状、光滑、团聚", "含水率": 48.8, "形状": "泥状", "Al2O3": 0.41}
     getalldata()
 
     resultName, resultMatching = matching_data(search_dict, attributeWeight)

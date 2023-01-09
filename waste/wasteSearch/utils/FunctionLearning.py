@@ -104,7 +104,7 @@ def searchByModel(modelname,labels):
     if (modelname == "铝灰溯源判别模型") or (modelname == "表面处理污泥溯源判别模型"):
         return discriminationModel(modelname, labels)
     else:
-        file_path = os.path.join(BASE_DIR,'wasteSearch\\files\\models\\')
+        file_path = os.path.join(BASE_DIR,'wasteSearch/files/models/')
         modelfilename = modelname2filename(modelname)
         model_path = "%s%s" % (file_path, modelfilename)
         # print(model_path)

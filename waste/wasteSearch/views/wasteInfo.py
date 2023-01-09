@@ -32,8 +32,8 @@ elementalComposition = ["C","H","N","O","F","Na","Mg","Al","Si","P","S","Cl","K"
 
 # 物相组成
 phaseComposition =['Al2O3', 'MgO', 'P Cl', 'K2O', 'Na2O', 'Fe2O3', 'SiO2', 'MnO', 'CaO', 'P S', 'SO3', 'As2O3', 'TiO2', 'Cr2O3', 'CuO', 'ZnO',
-                    'PbO', 'P F', 'V2O5', 'BaO', 'P2O5', 'SnO2', 'NiO', 'NaCl(%)', 'KCl', 'MgCl2', 'Mg(OH)2','AlCl3', 'MnCl2',
-                    'NH4Cl(%)', 'TiCl4', 'FeCl2', 'FeCl3', 'CaCl2', 'CaF2', 'CaSO4', 'CaCO3', 'P BaO', 'BaSO4', 'BaCO3', 'BaSiO3', 'BaS', 'NaOH',
+                    'PbO', 'P F', 'V2O5', 'BaO', 'P2O5', 'SnO2', 'NiO', 'NaCl', 'KCl', 'MgCl2', 'Mg(OH)2','AlCl3', 'MnCl2',
+                    'NH4Cl', 'TiCl4', 'FeCl2', 'FeCl3', 'CaCl2', 'CaF2', 'CaSO4', 'CaCO3', 'P BaO', 'BaSO4', 'BaCO3', 'BaSiO3', 'BaS', 'NaOH',
                     '辉铜矿', '黄铜矿', '铜铁硫化相', '铁橄榄石', '磁铁矿', '钙铁辉石', '玻璃相', '石膏', '方解石', '石英', '砷铜矿', '皓矾', '六水锌矾', '氧化锑', '三氧化二砷',
                     '五氧化二砷', '铅绿矾', '方铅矿', '铅黄', '铅', '密陀僧', '红锌矿', '闪锌矿', '锌', '纤锌矿', '冰晶石', '刚玉', 'β-氧化铝', '钾冰晶石', '铝', '锥冰晶石',
                     '西蒙冰晶石', '氟铝钙锂石', '白砷石', '三水胆矾', '副雄黄', '砷华', '铅矾', '块黑铅矿', '四水锌矾', '硒汞矿', '尖晶石', '氮化铝', '方镁石', '铜靛矾', 'CuSO4•H2O',
@@ -368,7 +368,7 @@ def compare(request, name, comparename):
 # 数据初始化导入数据库及统计每一类数据范围
 def create(request):
     queryset = WasteInfo.objects.all()
-    file_path = os.path.join(BASE_DIR,'wasteSearch\\files\\')
+    file_path = os.path.join(BASE_DIR,'wasteSearch/files/')
     csv_path = "%s%s" % (file_path, "六行业汇总-12.23.csv")
     csv_file = open(csv_path, encoding='utf-8')
     csv_reader_lines = csv.reader(csv_file)
