@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 溯源结果 </h3>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>标签名</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k,v in search_dict.items %}
+            <tr>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            查询结果
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>废物名称</th>
+                    <th>行业分类</th>
+                    <th>产生工段</th>
+                    <th>匹配度</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in queryset %}
+                <tr>
+                    <td>{{ obj.固废名称 }}</td>
+                    <td>{{ obj.行业分类 }}</td>
+                    <td>{{ obj.产生工段 }}</td>
+                    <td>{{ obj.匹配度 }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" href="/details/{{ obj.固废名称 }}/">详细信息</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+    
+{% endblock %}

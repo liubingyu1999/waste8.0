@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 溯源内容 </h3>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>标签名</th>
+                <th>内容</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k,v in search_dict.items %}
+            <tr>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            溯源结果
+        </div>
+        <h3>  {{result}}</h3>
+    </div>
+    <br></br>
+    <img id="image_code" src="{% static 'img/Al.png' %}" width="1100">
+    <br></br>
+    <br></br>
+</div>
+{% endblock %}
+
+
+{% block js %}
+    
+{% endblock %}

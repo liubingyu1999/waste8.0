@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:left;"> 选择指定的模型进行溯源 </h3>
+        </div>
+
+        <div style="float: left;width: 500px;">
+            <form method="get">
+                <select class="form-control" name="modelName" id="modelName">
+                    <option value="" selected>请选择要使用的模型</option>
+                    {% for field in models %}
+                    <option value="{{field}}">{{ field }}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" id="chooseModel">选择</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+<br></br>
+<br></br>
+<div class="container">
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+        <span style="font-family:仿宋">
+            注意：
+            不同的模型可以用来预测不同类型的废物。例如：
+        </span>
+        
+    </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “废物类别_一级指纹”通过一级指纹来预测该废物的种类，该模型使用的一级指纹包括：表观形貌、物理形态、含水率，可以预测的种类包括：固相热处理渣、液固相浸出渣、液相反应残液、蒸馏精馏、收尘灰、蒸发结晶、废水处理污泥。
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “固相热处理渣_二级指纹”通过二级指纹来预测废物的名称，使用时请确保废物所属种类是固相热处理渣，该模型使用的二级指纹包括：Fe、Cu、Zn、Al2O3、MgO、Fe2O3、SiO2、CaO、PbO、BaO。            
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “液固相浸出渣_二级指纹”通过二级指纹来预测废物的名称，使用时请确保废物所属种类是液固相浸出渣，该模型使用的二级指纹包括：Cr、Ni、Cu、Zn、Al2O3、MgO、Fe2O3、SiO2、MnO、CaO、TiO2。
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “蒸馏精馏_二级指纹”通过二级指纹来预测废物的名称，使用时请确保废物所属种类是蒸馏精馏，该模型使用的二级指纹包括：灰分、挥发分、C、H、O。
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “收尘灰_二级指纹”通过二级指纹来预测废物的名称，使用时请确保废物所属种类是收尘灰，该模型使用的二级指纹包括：Zn、Pb、Al2O3、P Cl、Fe2O3、SiO2、CaO。
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “收尘灰_三级指纹”通过三级指纹来预测废物的名称，使用时请确保废物所属种类是收尘灰，该模型使用的三级指纹包括：T Cu、T Pb、T Zn、T Ni、T Cr、T As、T Ba。
+            </span>
+        
+        </span>
+    </p>
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                “匹配度模型”通过计算标签的匹配度来预测最相近的废物名称，可以在不了解废物的废物类别、行业分类的情况下使用。
+            </span>
+        
+        </span>
+    </p>
+</div>
+
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript">
+    $('#chooseModel').click(function(e){
+        e.preventDefault();
+        var modelName = document.getElementById("modelName").value; 
+        console.log(modelName);
+        switch(modelName){
+            case "匹配度模型":
+                window.location.href = "/search/label/";
+                break;
+            case "废物产生节点溯源":
+                window.location.href = "/search/废物产生节点溯源/";
+                break;
+            case "固相热处理渣类废物溯源":
+                window.location.href = "/search/固相热处理渣类废物溯源/";
+                break;
+            case "收尘灰类废物溯源模型1":
+                window.location.href = "/search/收尘灰类废物溯源模型1/";
+                break;
+            case "收尘灰类废物溯源模型2":
+                window.location.href = "/search/收尘灰类废物溯源模型2/";
+                break;
+            case "浸出渣类废物溯源":
+                window.location.href = "/search/浸出渣类废物溯源/";
+                break;
+            case "精蒸馏残渣类废物溯源":
+                window.location.href = "/search/精蒸馏残渣类废物溯源/";
+                break;
+            case "铝灰溯源判别模型":
+                window.location.href = "/search/铝灰溯源判别模型/";
+                break;
+            case "表面处理污泥溯源判别模型":
+                window.location.href = "/search/表面处理污泥溯源判别模型/";
+                break;
+            default:
+                window.location.href = "/search/label/";
+                break;
+        }
+    });
+</script>
+{% endblock %}

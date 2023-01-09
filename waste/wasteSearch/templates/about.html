@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <style>
+        body{
+           margin:0px;
+           padding:0px;
+           font-family:sans-serif;
+           background: url(../static/img/about.png);
+           background-repeat:no-repeat ;
+           background-size:100% 100%;
+           background-attachment: fixed;
+        }
+        .account h2{
+            margin-top: 10px ;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+        <div>
+            <div class="jumbotron" style="margin-left: 100px;margin-right: 100px;background-color: #c5c0c0;opacity: 0.9">
+                <h1 style="margin-left: 100px">系统简介</h1>
+                <h3 style="margin-left: 100px;margin-right: 100px;margin-bottom: 100px;margin-top: 20px;">
+                    高风险固体废物指纹特征数据库及溯源信息平台，存储了有色冶炼、表面处理、煤化工、石油化工、农药、无机盐化工六大工业行业生产过程中产生的母液、
+                    精蒸馏残渣、滤渣、废酸、废碱、废盐、废有机溶剂、废催化剂、废水处理污泥、高毒性尾矿、集除尘装置产生的粉尘、焚烧底渣类、废矿物油等十二大类废物的基础特征及指纹特征数据，
+                    包括行业分类、废物类型、固废名称、产生环节以及废物描述，包含所有废物的表观形貌、物理特性、基本化学组成、污染特性指标等数据。具有统计分析、数据增删改查、溯源分析等功能，
+                    可对数据库进行更新与管理。输入不明废物相关污染特性指标，与数据库中现有数据进行匹配，通过溯源模型计算，可判别出可能的废物类型。构建高风险固体废物指纹特征数据库，
+                    对于促进废物精细化管理，实现不明废物快速溯源意义重大。
+                </h3>
+            </div>
+         </div>
+
+</body>
+</html>
+
+{% endblock %}

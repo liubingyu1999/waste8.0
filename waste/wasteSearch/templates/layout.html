@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>高风险固体废物指纹特征数据库及溯源信息平台</title>
+    <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mailTable.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tanchuang.css' %}">
+    <script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+    <style>
+        .navbar {
+            border-radius: 0;
+
+        }
+        .main{width: 1400px;margin: 0 auto;}
+		.left{width: 45%;float: left;}
+		.right{width: 45%;float: right;}
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container" style="width: 1300px;">
+
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                </a>
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"> 高风险固体废物指纹特征数据库及溯源信息平台 </a>
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="/waste/list/">废物数据管理</a></li>
+                    <li><a href="/index/">废物特性查询</a></li>
+                    <li><a href="/search/label/">不明废物溯源</a></li>
+                    <li><a href="/finger/feature/">指纹特征信息</a></li>
+                    {% if request.session.info.type == "管理员"%}
+                        <li><a href="/user/list/">用户管理</a></li>
+                    {% endif %}
+                    <li><a href="/help/">帮助</a></li>
+                    <li><a href="/about/">关于</a></li>
+                    <!-- <li><a href="#">Link</a></li> -->
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    <li>
+                        <a class="btn btn-lg" style="font-size:14px;" href="javascript:history.go(-1);">
+                            <span aria-hidden="true"></span>
+                            返回
+                        </a>
+                    </li>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false" style="font-size:15px;">{{ request.session.info.name }}
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/logout/">注销</a></li>
+                    </ul>
+                </li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+
+
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.min.js' %}"></script>
+    {# 引入echars 在此画图#}
+    <script src="{% static 'js/echarts.js' %}"></script>
+    <script src="{% static 'js/echarts-gl.min.js' %}"></script>
+    <script src="{% static 'js/ecSimpleTransform.min.js' %}"></script>
+    <script src="{% static 'js/tanchuang.js' %}"></script>
+
+    {% block js %}{% endblock %}
+</body>
+
+</html>

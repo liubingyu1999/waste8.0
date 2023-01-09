@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ title }}</h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" >
+                    {% csrf_token %}
+
+                    {% for field in form %}
+                        <div class="form-group">
+                            <label> {{ field.label }} </label>
+                            {{ field }}
+                            <span style="color: red;">{{ field.errors.0 }}</span>
+                        </div>
+                    {% endfor %}
+
+                    <div>
+                     <label>用户类型 </label>
+                        <select class="form-control" required="required" name="inputType">
+                          <option id="option1" name="root">管理员</option>
+                          <option id="option2" name="normal">普通用户</option>
+                        </select>
+                    </div>
+                    <div  style="margin-top: 20px;">
+                       <label>用户状态</label>
+                        <select class="form-control" required="required" name="inputState">
+                          <option id="option1" name="open">启用</option>
+                          <option id="option2" name="off">禁用</option>
+                        </select>
+                    </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top: 20px;">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

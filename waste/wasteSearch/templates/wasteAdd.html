@@ -1,0 +1,157 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">废物数据管理——新增废物 </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="form-group" style="margin-top: 10px;margin-left: 30px;font-size: 15px">
+                        <label for="morphology" class="col-sm-1 control-label" style="margin-top: 6px;">固废名称</label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="wasteName" name="morphology" placeholder="请填写新增固废名称">
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="row" style="margin-top: 16px;">
+                         <label for="morphology" style="margin-top: 16px;font-size: 15px;margin-left: 45px">固废特性</label>
+                    </div>
+                </div>
+                <div id="labels">
+
+                </div>
+                <div class="form-group" >
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="wasteCReset" type="reset" class="btn btn-info" style="margin-right: 80px;margin-left: 150px">重置</button>
+                        <button id="wasteCommit" type="submit" class="btn btn-success">提交</button>
+
+                    </div>
+                </div>
+
+                <div  style="margin-top: 80px;font-size: 15px;margin-left: 25px">
+                    <label for="exampleInputFile" >上传固废照片</label>
+                    {% csrf_token %}
+                    <input type="file" id="exampleInputFile" name="wasteFile">
+                    <button id="wasteReset" type="submit"  class="btn btn-warning" style="margin-top: 20px;">上传</button>
+                </div>
+
+                </form>
+
+        </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <br></br>
+
+
+
+
+{% endblock %}
+
+
+{% block js %}
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in select_label %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-5 col-md-5 col-xs-5">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#labels").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn', function () {
+
+        //添加减号
+        var $content = "";
+        $content += '<a href="javascript:;" class="delInput">';
+        $content += '<span class="glyphicon glyphicon-minus"></span>';
+        $content += '</a>';
+        $(this).parent().append($content);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in select_label %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-5 col-md-5 col-xs-5">';
+        html += '<input type="text" name="q" placeholder = "请填写属性值" /> ';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        html += '<a href="javascript:;" class="addInputReturn">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#labels").append(html);
+    })
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+</script>
+
+{% endblock %}
+
+$.ajax({
+    url: 'ajax/getLabels/',
+    data:{"physicalform":$(this).val()},
+    type: 'GET',
+    dataType: 'json',
+    success: function (data) {
+        var content='';
+        content += '<option value="" selected>请选择标签名</option>';
+        $.each(data, function(i, item){
+            content+='<option value='+item+'>'+item+'</option>';
+        });
+        $('#physicalName').html(content)
+    },
+});

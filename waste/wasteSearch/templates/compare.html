@@ -1,0 +1,3772 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:left;"> 选择指定的固废对比 </h3>
+        </div>
+
+        <div style="float: left;width: 500px;">
+            <form method="get">
+                <select class="form-control" name="compareName" id="compareName">
+                    <option value="" selected>请选择要对比的固废名称</option>
+                    {% for field in names %}
+                    <option value="{{field}}">{{ field }}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" id="compareBtn">对比</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+<br></br>
+
+<div class = "main">
+    <div class = "left">
+        <div>
+            <div style="height: 800px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        {{currname}}基础信息
+                    </div>
+
+                    <table class="mailTable table-bordered">
+                        <tr>
+                            <th> 字段名 </th>
+                            <th> 值 </th>
+                        </tr>
+                        {% for k, v in basic_info.items %}
+                        <tr>
+                            <td class="column basic">{{ k }}</td>
+                            <td class="basic">{{ v }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    
+                    
+                </div>
+            </div>
+            <br></br>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    {{currname}}化学指标
+                </div>
+
+                <table class="mailTable table-bordered">
+                    <tr>
+                        <th> 类名 </th>
+                        <th> 数值名 </th>
+                        <th> 取值范围 </th>
+                    </tr>
+                    <tr>
+                        <td class="labelhead" rowspan="{{element_size}}">
+                            <a id="chartsBtn1" href="javascript:void(0)">元素组成 (%)</a>
+                        </td>
+                        
+                    </tr>    
+                    {% for k, v in element_txt.items %}
+                    <tr>
+                        
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{phase_size}}">
+                            <a id="chartsBtn2" href="javascript:void(0)">物象组成 (%)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in phase_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{polluCont_size}}">
+                            <a id="chartsBtn4" href="javascript:void(0)">污染物含量 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in polluCont_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{toxic_size}}">
+                            <a id="chartsBtn5" href="javascript:void(0)">毒性浸出浓度 (mg/L)</a>    
+                        </td>
+                    </tr>
+                    {% for k, v in toxic_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    <tr>
+                        <td class="labelhead" rowspan="{{organic_size}}">
+                            <a id="chartsBtn6" href="javascript:void(0)">有机污染物 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in organic_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{pesticide_size}}">
+                            <a id="chartsBtn7" href="javascript:void(0)">农药 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in pesticide_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{PAH_size}}">
+                            <a id="chartsBtn8" href="javascript:void(0)">多环芳烃 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in PAH_txt.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            
+            </div>
+
+            <div id="chart1" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn1" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">元素组成</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="element_button3" style="z-index: 99"
+                                onclick="element('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="element_button5" style="z-index: 99"
+                                onclick="element('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="element_button10" style="z-index: 99"
+                                onclick="element('10')">top10</button>
+                        </div>
+                        <div id="element" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart2" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn2" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">物象组成</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="object_button3" style="z-index: 99"
+                                onclick="object('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="object_button5" style="z-index: 99"
+                                onclick="object('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="object_button10" style="z-index: 99"
+                                onclick="object('10')">top10</button>
+                        </div>
+                        <div id="object" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {# 污染物含量#}
+
+            <div id="chart4" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn4" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">污染物含量</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="pollutant_button3" style="z-index: 99"
+                                onclick="pollutant('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="pollutant_button5" style="z-index: 99"
+                                onclick="pollutant('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="pollutant_button10" style="z-index: 99"
+                                onclick="pollutant('10')">top10</button>
+                        </div>
+                        <div id="pollutant"style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+
+            {# 多环芳烃、毒性浸出液#}
+            <div id="chart5" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn5" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">毒性浸出液</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="poison_button3" style="z-index: 99"
+                                onclick="poison('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="poison_button5" style="z-index: 99"
+                                onclick="poison('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="poison_button10" style="z-index: 99"
+                                onclick="poison('10')">top10</button>
+                        </div>
+                        <div id="poison" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {# 有机污染物 #}
+            <div id="chart6" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn6" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">有机污染物</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="organic_button3" style="z-index: 99"
+                                onclick="organic('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="organic_button5" style="z-index: 99"
+                                onclick="organic('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="organic_button10" style="z-index: 99"
+                                onclick="organic('10')">top10</button>
+                        </div>
+                        <div id="organic" style="width:1100px; height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart7" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn7" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">农药</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="pesticide_button3" style="z-index: 99"
+                                onclick="pesticide('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="pesticide_button5" style="z-index: 99"
+                                onclick="pesticide('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="pesticide_button10" style="z-index: 99"
+                                onclick="pesticide('10')">top10</button>
+                        </div>
+                        <div id="pesticide" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart8" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn8" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">多环芳烃</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="PAH_button3" style="z-index: 99"
+                                onclick="PAH('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="PAH_button5" style="z-index: 99"
+                                onclick="PAH('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="PAH_button10" style="z-index: 99"
+                                onclick="PAH('10')">top10</button>
+                        </div>
+                        <div id="PAH" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 遮盖层 -->
+            <div id="bg" class="bg"></div>
+            <br></br>
+
+        </div>
+
+    </div>
+
+    <div class = "right">
+        <div>
+            <div style="height: 800px;">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                        {{comparename}}基础信息
+                    </div>
+
+                    <table class="mailTable table-bordered">
+                        <tr>
+                            <th> 字段名 </th>
+                            <th> 值 </th>
+                        </tr>
+                        {% for k, v in basic_info_com.items %}
+                        <tr>
+                            <td class="column basic">{{ k }}</td>
+                            <td class="basic">{{ v }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                    
+                    
+                </div>
+            </div>
+            <br></br>
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                    {{comparename}}化学指标
+                </div>
+
+                <table class="mailTable table-bordered">
+                    <tr>
+                        <th> 类名 </th>
+                        <th> 数值名 </th>
+                        <th> 取值范围 </th>
+                    </tr>
+                    <tr>
+                        <td class="labelhead" rowspan="{{element_size_com}}">
+                            <a id="chartsBtn11" href="javascript:void(0)">元素组成 (%)</a>
+                        </td>
+                        
+                    </tr>    
+                    {% for k, v in element_txt_com.items %}
+                    <tr>
+                        
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{phase_size_com}}">
+                            <a id="chartsBtn12" href="javascript:void(0)">物象组成 (%)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in phase_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{polluCont_size_com}}">
+                            <a id="chartsBtn14" href="javascript:void(0)">污染物含量 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in polluCont_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{toxic_size_com}}">
+                            <a id="chartsBtn15" href="javascript:void(0)">毒性浸出浓度 (mg/L)</a>    
+                        </td>
+                    </tr>
+                    {% for k, v in toxic_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+                    
+                    <tr>
+                        <td class="labelhead" rowspan="{{organic_size_com}}">
+                            <a id="chartsBtn16" href="javascript:void(0)">有机污染物 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in organic_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{pesticide_size_com}}">
+                            <a id="chartsBtn17" href="javascript:void(0)">农药 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in pesticide_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+
+                    <tr>
+                        <td class="labelhead" rowspan="{{PAH_size_com}}">
+                            <a id="chartsBtn18" href="javascript:void(0)">多环芳烃 (mg/kg)</a>
+                        </td>
+                    </tr>    
+                    {% for k, v in PAH_txt_com.items %}
+                    <tr>
+                        <td class="column">{{ k }}</td>
+                        <td>{{ v }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            
+            </div>
+
+            <div id="chart11" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn11" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">元素组成</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="element_com_button3" style="z-index: 99"
+                                onclick="element_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="element_com_button5" style="z-index: 99"
+                                onclick="element_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="element_com_button10" style="z-index: 99"
+                                onclick="element_com('10')">top10</button>
+                        </div>
+                        <div id="element_com" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart12" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn12" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">物象组成</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="object_com_button3" style="z-index: 99"
+                                onclick="object_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="object_com_button5" style="z-index: 99"
+                                onclick="object_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="object_com_button10" style="z-index: 99"
+                                onclick="object_com('10')">top10</button>
+                        </div>
+                        <div id="object_com" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {# 污染物含量#}
+
+            <div id="chart14" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn14" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">污染物含量</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="pollutant_com_button3" style="z-index: 99"
+                                onclick="pollutant_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="pollutant_com_button5" style="z-index: 99"
+                                onclick="pollutant_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="pollutant_com_button10" style="z-index: 99"
+                                onclick="pollutant_com('10')">top10</button>
+                        </div>
+                        <div id="pollutant_com"style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+
+            {# 多环芳烃、毒性浸出液#}
+            <div id="chart15" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn15" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">毒性浸出液</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="poison_com_button3" style="z-index: 99"
+                                onclick="poison_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="poison_com_button5" style="z-index: 99"
+                                onclick="poison_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="poison_com_button10" style="z-index: 99"
+                                onclick="poison_com('10')">top10</button>
+                        </div>
+                        <div id="poison_com" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            {# 有机污染物 #}
+            <div id="chart16" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn16" href="javascript:void(0)">关闭</a></span>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">有机污染物</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="organic_com_button3" style="z-index: 99"
+                                onclick="organic_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="organic_com_button5" style="z-index: 99"
+                                onclick="organic_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="organic_com_button10" style="z-index: 99"
+                                onclick="organic_com('10')">top10</button>
+                        </div>
+                        <div id="organic_com" style="width:1100px; height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart17" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn17" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">农药</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="pesticide_com_button3" style="z-index: 99"
+                                onclick="pesticide_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="pesticide_com_button5" style="z-index: 99"
+                                onclick="pesticide_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="pesticide_com_button10" style="z-index: 99"
+                                onclick="pesticide_com('10')">top10</button>
+                        </div>
+                        <div id="pesticide_com" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="chart18" class="charts">
+                <div id="charts-title" class="charts-title">
+                    <span><a id="closeBtn18" href="javascript:void(0)">关闭</a></span>
+                </div>
+                
+                <div class="panel panel-warning">
+                    <div class="panel-heading">多环芳烃</div>
+                    <div class="panel-body">
+                        <div class="btn-group" role="group" aria-label="..." style="float:right">
+                            <button type="button" class="btn btn-primary" id="PAH_com_button3" style="z-index: 99"
+                                onclick="PAH_com('3')">top3</button>
+                            <button type="button" class="btn btn-default" id="PAH_com_button5" style="z-index: 99"
+                                onclick="PAH_com('5')">top5</button>
+                            <button type="button" class="btn btn-default" id="PAH_com_button10" style="z-index: 99"
+                                onclick="PAH_com('10')">top10</button>
+                        </div>
+                        <div id="PAH_com" style="width: 1100px;height:600px;"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 遮盖层 -->
+            <div id="bg" class="bg"></div>
+            <br></br>
+
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block js %}
+<script type="text/javascript">
+    $('#compareBtn').click(function(e){
+        e.preventDefault();
+        var compareName = document.getElementById("compareName").value; 
+        console.log(compareName);
+        window.location.href = "/compare/{{currname}}/" + compareName + "/";
+    });
+</script>
+
+{# 渲染有机污染物 #}
+<script type="text/javascript">
+    var chartDom = document.getElementById('organic');
+    var myChart = echarts.init(chartDom);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var org_ind3 = {{organic3 | safe}};
+    var option;
+    if (org_ind3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: org_ind3,
+            },
+            {
+                id: 'organic',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '有机污染物',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '元素含量范围',
+                type: 'boxplot',
+                datasetId: 'organic',
+                itemStyle: {
+                color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart.setOption(option);
+</script>
+
+{# 渲染初始元素组成 根据按钮变换视图 #}
+<script type="text/javascript">
+    // 初始渲染dom
+    var chartDom_element = document.getElementById('element');
+    var myChart = echarts.init(chartDom_element);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var ele_ind3 = {{element3 | safe}};
+    var option;
+    if (ele_ind3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: ele_ind3,
+            },
+            {
+                id: 'elementComposition',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '元素组成',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(%)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '元素含量范围',
+                type: 'boxplot',
+                datasetId: 'elementComposition',
+                itemStyle: {
+                color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart.setOption(option);
+</script>
+
+{# 渲染初始物象组成 根据按钮变换视图 #}
+<script type="text/javascript">
+    var chartDom_object = document.getElementById('object');
+    var myChart_object = echarts.init(chartDom_object);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pha3 = {{phase3 | safe}};
+    var option;
+    if (pha3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pha3,
+            },
+            {
+                id: 'phaseComposition',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '物象组成',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(%)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '物象含量范围',
+                type: 'boxplot',
+                datasetId: 'phaseComposition',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_object.setOption(option);
+</script>
+
+{# 渲染污染物含量 #}
+<script type="text/javascript">
+    var chartDom_pollutant = document.getElementById('pollutant');
+    var myChart_pollutant = echarts.init(chartDom_pollutant);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pollutant = {{polluCont3 | safe}};
+    var option;
+    if (pollutant.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pollutant,
+            },
+            {
+                id: 'pollutant',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '污染物含量',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '污染物含量范围',
+                type: 'boxplot',
+                datasetId: 'pollutant',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_pollutant.setOption(option);
+</script>
+
+{# 渲染多环芳烃 #}
+<script type="text/javascript">
+    var chartDom_PAH = document.getElementById('PAH');
+    var myChart_PAH = echarts.init(chartDom_PAH);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var PAH3 = {{PAH3 | safe}};
+    var option;
+    if (PAH3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: PAH3,
+            },
+            {
+                id: 'PAHs',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '多环芳烃',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '多环芳烃',
+                type: 'boxplot',
+                datasetId: 'PAHs',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_PAH.setOption(option);
+</script>
+
+{# 渲染毒性浸出液 #}
+<script type="text/javascript">
+    var chartDom_toxic = document.getElementById('poison');
+    var myChart_toxic = echarts.init(chartDom_toxic);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var toxic = {{toxic3 | safe}};
+    var option;
+    if (toxic.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: toxic,
+            },
+            {
+                id: 'toxic',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '毒性浸出浓度',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/L)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '毒性浸出浓度',
+                type: 'boxplot',
+                datasetId: 'toxic',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_toxic.setOption(option);
+
+
+</script>
+
+{# 渲染农药 #}
+<script type="text/javascript">
+    var chartDom_pesticide = document.getElementById('pesticide');
+    var myChart_pesticide = echarts.init(chartDom_pesticide);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pesticide = {{pesticide3 | safe}};
+    var option;
+    if (pesticide.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pesticide,
+            },
+            {
+                id: 'pesticide',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '农药',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '农药',
+                type: 'boxplot',
+                datasetId: 'pesticide',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_pesticide.setOption(option);
+
+</script>
+{# 元素组成 物相组成修改显示数量 #}
+<script type="text/javascript">
+
+    //判断是否需要显示该组件
+    function element(num) {
+        //需要修改 默认显示图形 默认渲染 当按钮置灰则再重新渲染
+        if (num == 3) {
+            //create_element(3);
+            document.getElementById('element_button3').className = "btn btn-primary";
+            document.getElementById('element_button5').className = "btn btn-default";
+            document.getElementById('element_button10').className = "btn btn-default";
+            create_element(3);
+        } else if (num == 5) {
+            document.getElementById('element_button3').className = "btn btn-default";
+            document.getElementById('element_button5').className = "btn btn-primary";
+            document.getElementById('element_button10').className = "btn btn-default";
+            create_element(5);
+        }
+        else {
+            document.getElementById('element_button3').className = "btn btn-default";
+            document.getElementById('element_button5').className = "btn btn-default";
+            document.getElementById('element_button10').className = "btn btn-primary";
+            create_element(10);
+        }
+    }
+    function object(num) {
+        if (num == 3) {
+            document.getElementById('object_button3').className = "btn btn-primary";
+            document.getElementById('object_button5').className = "btn btn-default";
+            document.getElementById('object_button10').className = "btn btn-default";
+            create_object(3);
+        }
+        else if (num == 5) {
+            document.getElementById('object_button3').className = "btn btn-default";
+            document.getElementById('object_button5').className = "btn btn-primary";
+            document.getElementById('object_button10').className = "btn btn-default";
+            create_object(5);
+        }
+        else {
+            document.getElementById('object_button3').className = "btn btn-default";
+            document.getElementById('object_button5').className = "btn btn-default";
+            document.getElementById('object_button10').className = "btn btn-primary";
+            create_object(10);
+        }
+    }
+
+    function organic(num) {
+        if (num == 3) {
+            document.getElementById('organic_button3').className = "btn btn-primary";
+            document.getElementById('organic_button5').className = "btn btn-default";
+            document.getElementById('organic_button10').className = "btn btn-default";
+            create_organic(3);
+        }
+        else if (num == 5) {
+            document.getElementById('organic_button3').className = "btn btn-default";
+            document.getElementById('organic_button5').className = "btn btn-primary";
+            document.getElementById('organic_button10').className = "btn btn-default";
+            create_organic(5);
+        }
+        else {
+            document.getElementById('organic_button3').className = "btn btn-default";
+            document.getElementById('organic_button5').className = "btn btn-default";
+            document.getElementById('organic_button10').className = "btn btn-primary";
+            create_organic(10);
+        }
+    }
+
+    function pollutant(num) {
+        if (num == 3) {
+            document.getElementById('pollutant_button3').className = "btn btn-primary";
+            document.getElementById('pollutant_button5').className = "btn btn-default";
+            document.getElementById('pollutant_button10').className = "btn btn-default";
+            create_pollutant(3);
+        }
+        else if (num == 5) {
+            document.getElementById('pollutant_button3').className = "btn btn-default";
+            document.getElementById('pollutant_button5').className = "btn btn-primary";
+            document.getElementById('pollutant_button10').className = "btn btn-default";
+            create_pollutant(5);
+        }
+        else {
+            document.getElementById('pollutant_button3').className = "btn btn-default";
+            document.getElementById('pollutant_button5').className = "btn btn-default";
+            document.getElementById('pollutant_button10').className = "btn btn-primary";
+            create_pollutant(10);
+        }
+    }
+
+    function PAH(num) {
+        if (num == 3) {
+            document.getElementById('PAH_button3').className = "btn btn-primary";
+            document.getElementById('PAH_button5').className = "btn btn-default";
+            document.getElementById('PAH_button10').className = "btn btn-default";
+            create_PAH(3);
+        }
+        else if (num == 5) {
+            document.getElementById('PAH_button3').className = "btn btn-default";
+            document.getElementById('PAH_button5').className = "btn btn-primary";
+            document.getElementById('PAH_button10').className = "btn btn-default";
+            create_PAH(5);
+        }
+        else {
+            document.getElementById('PAH_button3').className = "btn btn-default";
+            document.getElementById('PAH_button5').className = "btn btn-default";
+            document.getElementById('PAH_button10').className = "btn btn-primary";
+            create_PAH(10);
+        }
+    }
+
+    function poison(num) {
+        if (num == 3) {
+            document.getElementById('poison_button3').className = "btn btn-primary";
+            document.getElementById('poison_button5').className = "btn btn-default";
+            document.getElementById('poison_button10').className = "btn btn-default";
+            create_poison(3);
+        }
+        else if (num == 5) {
+            document.getElementById('poison_button3').className = "btn btn-default";
+            document.getElementById('poison_button5').className = "btn btn-primary";
+            document.getElementById('poison_button10').className = "btn btn-default";
+            create_poison(5);
+        }
+        else {
+            document.getElementById('poison_button3').className = "btn btn-default";
+            document.getElementById('poison_button5').className = "btn btn-default";
+            document.getElementById('poison_button10').className = "btn btn-primary";
+            create_poison(10);
+        }
+    }
+
+    function pesticide(num) {
+        if (num == 3) {
+            document.getElementById('pesticide_button3').className = "btn btn-primary";
+            document.getElementById('pesticide_button5').className = "btn btn-default";
+            document.getElementById('pesticide_button10').className = "btn btn-default";
+            create_pesticide(3);
+        }
+        else if (num == 5) {
+            document.getElementById('pesticide_button3').className = "btn btn-default";
+            document.getElementById('pesticide_button5').className = "btn btn-primary";
+            document.getElementById('pesticide_button10').className = "btn btn-default";
+            create_pesticide(5);
+        }
+        else {
+            document.getElementById('pesticide_button3').className = "btn btn-default";
+            document.getElementById('pesticide_button5').className = "btn btn-default";
+            document.getElementById('pesticide_button10').className = "btn btn-primary";
+            create_pesticide(10);
+        }
+    }
+    //画元素组成图
+    function create_element(num) {
+        var myChart_element = echarts.getInstanceByDom(document.getElementById("element"));
+        if (myChart_element == null) {
+            myChart_element = echarts.init(document.getElementById("element"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var element;
+        switch (num){
+            case 3: element = {{element3 | safe}};
+            break;
+            case 5: element = {{element5 | safe}};
+            break;
+            case 10: element = {{element10 | safe}};
+            break;
+        }
+        var option;
+        if (element.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: element,
+                },
+                {
+                    id: 'elementComposition',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                            resultDimensions: [
+                                { name: 'min', from: 'value', method: 'min' },
+                                { name: 'Q1', from: 'value', method: 'Q1' },
+                                { name: 'median', from: 'value', method: 'median' },
+                                { name: 'Q3', from: 'value', method: 'Q3' },
+                                { name: 'max', from: 'value', method: 'max' },
+                                { name: 'name', from: 'name' }
+                            ],
+                            groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '元素组成',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(%)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '元素含量范围',
+                    type: 'boxplot',
+                    datasetId: 'elementComposition',
+                    itemStyle: {
+                    color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart.setOption(option);
+
+    }
+    //画物象组成图
+    function create_object(num) {
+        var myChart_object = echarts.getInstanceByDom(document.getElementById("object"));
+        if (myChart_object == null) {
+            myChart_object = echarts.init(document.getElementById("object"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var phase;
+        switch (num){
+            case 3: phase = {{phase3 | safe}};
+            break;
+            case 5: phase = {{phase5 | safe}};
+            break;
+            case 10: phase = {{phase10 | safe}};
+            break;
+        }
+        var option;
+        if (phase.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: phase,
+                },
+                {
+                    id: 'phaseComposition',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '物象组成',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '物象含量范围',
+                    type: 'boxplot',
+                    datasetId: 'phaseComposition',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_object.setOption(option);
+    }
+
+    function create_organic(num) {
+        var myChart_organic = echarts.getInstanceByDom(document.getElementById("organic"));
+        if (myChart_organic == null) {
+            myChart_organic = echarts.init(document.getElementById("organic"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var organic;
+        switch (num){
+            case 3: organic = {{organic3 | safe}};
+            break;
+            case 5: organic = {{organic5 | safe}};
+            break;
+            case 10: organic = {{organic10 | safe}};
+            break;
+        }
+        var option;
+        if (organic.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: organic,
+                },
+                {
+                    id: 'organic',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '有机污染物',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '有机污染物含量',
+                    type: 'boxplot',
+                    datasetId: 'organic',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_organic.setOption(option);
+    }
+    function create_pollutant(num) {
+        var myChart_pollutant = echarts.getInstanceByDom(document.getElementById("pollutant"));
+        if (myChart_pollutant == null) {
+            myChart_pollutant = echarts.init(document.getElementById("pollutant"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var pollutant;
+        switch (num){
+            case 3: pollutant = {{polluCont3 | safe}};
+            break;
+            case 5: pollutant = {{polluCont5 | safe}};
+            break;
+            case 10: pollutant = {{polluCont10 | safe}};
+            break;
+        }
+        var option;
+        if (pollutant.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: pollutant,
+                },
+                {
+                    id: 'pollutant',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '污染物含量',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '污染物含量',
+                    type: 'boxplot',
+                    datasetId: 'pollutant',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_pollutant.setOption(option);
+    }
+    function create_PAH(num) {
+        var myChart_PAH = echarts.getInstanceByDom(document.getElementById("PAH"));
+        if (myChart_PAH == null) {
+            myChart_PAH = echarts.init(document.getElementById("PAH"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var PAH;
+        switch (num){
+            case 3: PAH = {{PAH3 | safe}};
+            break;
+            case 5: PAH = {{PAH5 | safe}};
+            break;
+            case 10: PAH = {{PAH10 | safe}};
+            break;
+        }
+        var option;
+        if (PAH.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: PAH,
+                },
+                {
+                    id: 'PAH',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '多环芳烃',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '多环芳烃',
+                    type: 'boxplot',
+                    datasetId: 'PAH',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_PAH.setOption(option);
+    }
+    function create_poison(num) {
+        var myChart_poison = echarts.getInstanceByDom(document.getElementById("poison"));
+        if (myChart_poison == null) {
+            myChart_poison = echarts.init(document.getElementById("poison"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var toxic;
+        switch (num){
+            case 3: toxic = {{toxic3 | safe}};
+            break;
+            case 5: toxic = {{toxic5 | safe}};
+            break;
+            case 10: toxic = {{toxic10 | safe}};
+            break;
+        }
+        var option;
+        if (toxic.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: toxic,
+                },
+                {
+                    id: 'toxic',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '毒性浸出浓度',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/L)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '毒性浸出浓度',
+                    type: 'boxplot',
+                    datasetId: 'toxic',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_poison.setOption(option);
+    }
+
+    function create_pesticide(num) {
+        var myChart_pesticide = echarts.getInstanceByDom(document.getElementById("pesticide"));
+        if (myChart_pesticide == null) {
+            myChart_pesticide = echarts.init(document.getElementById("pesticide"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var pesticide;
+        switch (num){
+            case 3: pesticide = {{pesticide3 | safe}};
+            break;
+            case 5: pesticide = {{pesticide5 | safe}};
+            break;
+            case 10: pesticide = {{pesticide10 | safe}};
+            break;
+        }
+        var option;
+        if (pesticide.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: pesticide,
+                },
+                {
+                    id: 'pesticide',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '农药',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '农药',
+                    type: 'boxplot',
+                    datasetId: 'pesticide',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_pesticide.setOption(option);
+    }
+
+</script>
+
+{# 要对比的废物 #}
+
+{# 渲染有机污染物 #}
+<script type="text/javascript">
+    var chartDom = document.getElementById('organic_com');
+    var myChart = echarts.init(chartDom);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var org_ind3 = {{organic3_com | safe}};
+    var option;
+    if (org_ind3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: org_ind3,
+            },
+            {
+                id: 'organic',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '有机污染物',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '元素含量范围',
+                type: 'boxplot',
+                datasetId: 'organic',
+                itemStyle: {
+                color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart.setOption(option);
+</script>
+
+{# 渲染初始元素组成 根据按钮变换视图 #}
+<script type="text/javascript">
+    // 初始渲染dom
+    var chartDom_element = document.getElementById('element_com');
+    var myChart = echarts.init(chartDom_element);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var ele_ind3 = {{element3_com | safe}};
+    var option;
+    if (ele_ind3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: ele_ind3,
+            },
+            {
+                id: 'elementComposition',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '元素组成',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(%)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '元素含量范围',
+                type: 'boxplot',
+                datasetId: 'elementComposition',
+                itemStyle: {
+                color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart.setOption(option);
+</script>
+
+{# 渲染初始物象组成 根据按钮变换视图 #}
+<script type="text/javascript">
+    var chartDom_object = document.getElementById('object_com');
+    var myChart_object = echarts.init(chartDom_object);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pha3 = {{phase3_com | safe}};
+    var option;
+    if (pha3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pha3,
+            },
+            {
+                id: 'phaseComposition',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '物象组成',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(%)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '物象含量范围',
+                type: 'boxplot',
+                datasetId: 'phaseComposition',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_object.setOption(option);
+</script>
+
+{# 渲染污染物含量 #}
+<script type="text/javascript">
+    var chartDom_pollutant = document.getElementById('pollutant_com');
+    var myChart_pollutant = echarts.init(chartDom_pollutant);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pollutant = {{polluCont3_com | safe}};
+    var option;
+    if (pollutant.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pollutant,
+            },
+            {
+                id: 'pollutant',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '污染物含量',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '污染物含量范围',
+                type: 'boxplot',
+                datasetId: 'pollutant',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_pollutant.setOption(option);
+</script>
+
+{# 渲染多环芳烃 #}
+<script type="text/javascript">
+    var chartDom_PAH = document.getElementById('PAH_com');
+    var myChart_PAH = echarts.init(chartDom_PAH);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var PAH3 = {{PAH3_com | safe}};
+    var option;
+    if (PAH3.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: PAH3,
+            },
+            {
+                id: 'PAHs',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '多环芳烃',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '多环芳烃',
+                type: 'boxplot',
+                datasetId: 'PAHs',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_PAH.setOption(option);
+</script>
+
+{# 渲染毒性浸出液 #}
+<script type="text/javascript">
+    var chartDom_toxic = document.getElementById('poison_com');
+    var myChart_toxic = echarts.init(chartDom_toxic);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var toxic = {{toxic3_com | safe}};
+    var option;
+    if (toxic.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: toxic,
+            },
+            {
+                id: 'toxic',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '毒性浸出浓度',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/L)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '毒性浸出浓度',
+                type: 'boxplot',
+                datasetId: 'toxic',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_toxic.setOption(option);
+
+
+</script>
+
+{# 渲染农药 #}
+<script type="text/javascript">
+    var chartDom_pesticide = document.getElementById('pesticide_com');
+    var myChart_pesticide = echarts.init(chartDom_pesticide);
+    echarts.registerTransform(ecSimpleTransform.aggregate);
+    var pesticide = {{pesticide3_com | safe}};
+    var option;
+    if (pesticide.length == 1 ) {  //暂无数据
+        option = {
+            title: {
+                text: '暂无数据',
+                x: 'center',
+                y: 'center',
+                textStyle: {
+                    fontSize: 20,
+                    fontWeight: 'normal',
+                }
+              }
+        }
+    } else {
+        option = {
+            dataset: [{
+                id: 'raw',
+                source: pesticide,
+            },
+            {
+                id: 'pesticide',
+                fromDatasetId: 'raw',
+                transform: [{
+                    type: 'ecSimpleTransform:aggregate',
+                    config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                    }
+                },
+                {
+                    type: 'sort',
+                    config: {
+                        dimension: 'max',
+                        order: 'asc'
+                    }
+                }]
+            }],
+            title: {
+                text: '农药',
+                left: 'center'
+            },
+            tooltip: {
+                trigger: 'axis',
+                confine: true
+            },
+            xAxis: {
+                name: '含量(mg/kg)',
+                nameLocation: 'middle',
+                nameGap: 30,
+                scale: true
+            },
+            yAxis: {
+                type: 'category'
+            },
+            grid: {
+                bottom: 100
+            },
+
+            dataZoom: [{
+                type: 'inside'
+            },
+            {
+                type: 'slider',
+                height: 20
+            }],
+            series: [{
+                name: '农药',
+                type: 'boxplot',
+                datasetId: 'pesticide',
+                itemStyle: {
+                    color: '#b8c5f2'
+                },
+                encode: {
+                    x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                    y: 'name',
+                    itemName: ['name'],
+                    tooltip: ['min', 'median', 'max']
+                }
+            }]
+        };
+    }
+    option && myChart_pesticide.setOption(option);
+
+</script>
+{# 元素组成 物相组成修改显示数量 #}
+<script type="text/javascript">
+
+    //判断是否需要显示该组件
+    function element_com(num) {
+        //需要修改 默认显示图形 默认渲染 当按钮置灰则再重新渲染
+        if (num == 3) {
+            //create_element(3);
+            document.getElementById('element_com_button3').className = "btn btn-primary";
+            document.getElementById('element_com_button5').className = "btn btn-default";
+            document.getElementById('element_com_button10').className = "btn btn-default";
+            create_element_com(3);
+        } else if (num == 5) {
+            document.getElementById('element_com_button3').className = "btn btn-default";
+            document.getElementById('element_com_button5').className = "btn btn-primary";
+            document.getElementById('element_com_button10').className = "btn btn-default";
+            create_element_com(5);
+        }
+        else {
+            document.getElementById('element_com_button3').className = "btn btn-default";
+            document.getElementById('element_com_button5').className = "btn btn-default";
+            document.getElementById('element_com_button10').className = "btn btn-primary";
+            create_element_com(10);
+        }
+    }
+    function object_com(num) {
+        if (num == 3) {
+            document.getElementById('object_com_button3').className = "btn btn-primary";
+            document.getElementById('object_com_button5').className = "btn btn-default";
+            document.getElementById('object_com_button10').className = "btn btn-default";
+            create_object_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('object_com_button3').className = "btn btn-default";
+            document.getElementById('object_com_button5').className = "btn btn-primary";
+            document.getElementById('object_com_button10').className = "btn btn-default";
+            create_object_com(5);
+        }
+        else {
+            document.getElementById('object_com_button3').className = "btn btn-default";
+            document.getElementById('object_com_button5').className = "btn btn-default";
+            document.getElementById('object_com_button10').className = "btn btn-primary";
+            create_object_com(10);
+        }
+    }
+
+    function organic_com(num) {
+        if (num == 3) {
+            document.getElementById('organic_com_button3').className = "btn btn-primary";
+            document.getElementById('organic_com_button5').className = "btn btn-default";
+            document.getElementById('organic_com_button10').className = "btn btn-default";
+            create_organic_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('organic_com_button3').className = "btn btn-default";
+            document.getElementById('organic_com_button5').className = "btn btn-primary";
+            document.getElementById('organic_com_button10').className = "btn btn-default";
+            create_organic_com(5);
+        }
+        else {
+            document.getElementById('organic_com_button3').className = "btn btn-default";
+            document.getElementById('organic_com_button5').className = "btn btn-default";
+            document.getElementById('organic_com_button10').className = "btn btn-primary";
+            create_organic_com(10);
+        }
+    }
+
+    function pollutant_com(num) {
+        if (num == 3) {
+            document.getElementById('pollutant_com_button3').className = "btn btn-primary";
+            document.getElementById('pollutant_com_button5').className = "btn btn-default";
+            document.getElementById('pollutant_com_button10').className = "btn btn-default";
+            create_pollutant_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('pollutant_com_button3').className = "btn btn-default";
+            document.getElementById('pollutant_com_button5').className = "btn btn-primary";
+            document.getElementById('pollutant_com_button10').className = "btn btn-default";
+            create_pollutant_com(5);
+        }
+        else {
+            document.getElementById('pollutant_com_button3').className = "btn btn-default";
+            document.getElementById('pollutant_com_button5').className = "btn btn-default";
+            document.getElementById('pollutant_com_button10').className = "btn btn-primary";
+            create_pollutant_com(10);
+        }
+    }
+
+    function PAH_com(num) {
+        if (num == 3) {
+            document.getElementById('PAH_com_button3').className = "btn btn-primary";
+            document.getElementById('PAH_com_button5').className = "btn btn-default";
+            document.getElementById('PAH_com_button10').className = "btn btn-default";
+            create_PAH_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('PAH_com_button3').className = "btn btn-default";
+            document.getElementById('PAH_com_button5').className = "btn btn-primary";
+            document.getElementById('PAH_com_button10').className = "btn btn-default";
+            create_PAH_com(5);
+        }
+        else {
+            document.getElementById('PAH_com_button3').className = "btn btn-default";
+            document.getElementById('PAH_com_button5').className = "btn btn-default";
+            document.getElementById('PAH_com_button10').className = "btn btn-primary";
+            create_PAH_com(10);
+        }
+    }
+
+    function poison_com(num) {
+        if (num == 3) {
+            document.getElementById('poison_com_button3').className = "btn btn-primary";
+            document.getElementById('poison_com_button5').className = "btn btn-default";
+            document.getElementById('poison_com_button10').className = "btn btn-default";
+            create_poison_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('poison_com_button3').className = "btn btn-default";
+            document.getElementById('poison_com_button5').className = "btn btn-primary";
+            document.getElementById('poison_com_button10').className = "btn btn-default";
+            create_poison_com(5);
+        }
+        else {
+            document.getElementById('poison_com_button3').className = "btn btn-default";
+            document.getElementById('poison_com_button5').className = "btn btn-default";
+            document.getElementById('poison_com_button10').className = "btn btn-primary";
+            create_poison_com(10);
+        }
+    }
+
+    function pesticide_com(num) {
+        if (num == 3) {
+            document.getElementById('pesticide_com_button3').className = "btn btn-primary";
+            document.getElementById('pesticide_com_button5').className = "btn btn-default";
+            document.getElementById('pesticide_com_button10').className = "btn btn-default";
+            create_pesticide_com(3);
+        }
+        else if (num == 5) {
+            document.getElementById('pesticide_com_button3').className = "btn btn-default";
+            document.getElementById('pesticide_com_button5').className = "btn btn-primary";
+            document.getElementById('pesticide_com_button10').className = "btn btn-default";
+            create_pesticide_com(5);
+        }
+        else {
+            document.getElementById('pesticide_com_button3').className = "btn btn-default";
+            document.getElementById('pesticide_com_button5').className = "btn btn-default";
+            document.getElementById('pesticide_com_button10').className = "btn btn-primary";
+            create_pesticide_com(10);
+        }
+    }
+    //画元素组成图
+    function create_element_com(num) {
+        var myChart_element = echarts.getInstanceByDom(document.getElementById("element_com"));
+        if (myChart_element == null) {
+            myChart_element = echarts.init(document.getElementById("element_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var element;
+        switch (num){
+            case 3: element = {{element3_com | safe}};
+            break;
+            case 5: element = {{element5_com | safe}};
+            break;
+            case 10: element = {{element10_com | safe}};
+            break;
+        }
+        var option;
+        if (element.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: element,
+                },
+                {
+                    id: 'elementComposition',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                            resultDimensions: [
+                                { name: 'min', from: 'value', method: 'min' },
+                                { name: 'Q1', from: 'value', method: 'Q1' },
+                                { name: 'median', from: 'value', method: 'median' },
+                                { name: 'Q3', from: 'value', method: 'Q3' },
+                                { name: 'max', from: 'value', method: 'max' },
+                                { name: 'name', from: 'name' }
+                            ],
+                            groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '元素组成',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(%)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '元素含量范围',
+                    type: 'boxplot',
+                    datasetId: 'elementComposition',
+                    itemStyle: {
+                    color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart.setOption(option);
+
+    }
+    //画物象组成图
+    function create_object_com(num) {
+        var myChart_object = echarts.getInstanceByDom(document.getElementById("object_com"));
+        if (myChart_object == null) {
+            myChart_object = echarts.init(document.getElementById("object_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var phase;
+        switch (num){
+            case 3: phase = {{phase3_com | safe}};
+            break;
+            case 5: phase = {{phase5_com | safe}};
+            break;
+            case 10: phase = {{phase10_com | safe}};
+            break;
+        }
+        var option;
+        if (phase.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: phase,
+                },
+                {
+                    id: 'phaseComposition',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '物象组成',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '物象含量范围',
+                    type: 'boxplot',
+                    datasetId: 'phaseComposition',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_object.setOption(option);
+    }
+
+    function create_organic_com(num) {
+        var myChart_organic = echarts.getInstanceByDom(document.getElementById("organic_com"));
+        if (myChart_organic == null) {
+            myChart_organic = echarts.init(document.getElementById("organic_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var organic;
+        switch (num){
+            case 3: organic = {{organic3_com | safe}};
+            break;
+            case 5: organic = {{organic5_com | safe}};
+            break;
+            case 10: organic = {{organic10_com | safe}};
+            break;
+        }
+        var option;
+        if (organic.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: organic,
+                },
+                {
+                    id: 'organic',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '有机污染物',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '有机污染物含量',
+                    type: 'boxplot',
+                    datasetId: 'organic',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_organic.setOption(option);
+    }
+    function create_pollutant_com(num) {
+        var myChart_pollutant = echarts.getInstanceByDom(document.getElementById("pollutant_com"));
+        if (myChart_pollutant == null) {
+            myChart_pollutant = echarts.init(document.getElementById("pollutant_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var pollutant;
+        switch (num){
+            case 3: pollutant = {{polluCont3_com | safe}};
+            break;
+            case 5: pollutant = {{polluCont5_com | safe}};
+            break;
+            case 10: pollutant = {{polluCont10_com | safe}};
+            break;
+        }
+        var option;
+        if (pollutant.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: pollutant,
+                },
+                {
+                    id: 'pollutant',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '污染物含量',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '污染物含量',
+                    type: 'boxplot',
+                    datasetId: 'pollutant',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_pollutant.setOption(option);
+    }
+    function create_PAH_com(num) {
+        var myChart_PAH = echarts.getInstanceByDom(document.getElementById("PAH_com"));
+        if (myChart_PAH == null) {
+            myChart_PAH = echarts.init(document.getElementById("PAH_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var PAH;
+        switch (num){
+            case 3: PAH = {{PAH3_com | safe}};
+            break;
+            case 5: PAH = {{PAH5_com | safe}};
+            break;
+            case 10: PAH = {{PAH10_com | safe}};
+            break;
+        }
+        var option;
+        if (PAH.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: PAH,
+                },
+                {
+                    id: 'PAH',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '多环芳烃',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '多环芳烃',
+                    type: 'boxplot',
+                    datasetId: 'PAH',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_PAH.setOption(option);
+    }
+    function create_poison_com(num) {
+        var myChart_poison = echarts.getInstanceByDom(document.getElementById("poison_com"));
+        if (myChart_poison == null) {
+            myChart_poison = echarts.init(document.getElementById("poison_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var toxic;
+        switch (num){
+            case 3: toxic = {{toxic3_com | safe}};
+            break;
+            case 5: toxic = {{toxic5_com | safe}};
+            break;
+            case 10: toxic = {{toxic10_com | safe}};
+            break;
+        }
+        var option;
+        if (toxic.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: toxic,
+                },
+                {
+                    id: 'toxic',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '毒性浸出浓度',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/L)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '毒性浸出浓度',
+                    type: 'boxplot',
+                    datasetId: 'toxic',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_poison.setOption(option);
+    }
+
+    function create_pesticide_com(num) {
+        var myChart_pesticide = echarts.getInstanceByDom(document.getElementById("pesticide_com"));
+        if (myChart_pesticide == null) {
+            myChart_pesticide = echarts.init(document.getElementById("pesticide_com"));
+        }
+        echarts.registerTransform(ecSimpleTransform.aggregate);
+        var pesticide;
+        switch (num){
+            case 3: pesticide = {{pesticide3_com | safe}};
+            break;
+            case 5: pesticide = {{pesticide5_com | safe}};
+            break;
+            case 10: pesticide = {{pesticide10_com | safe}};
+            break;
+        }
+        var option;
+        if (pesticide.length == 1 ) {  //暂无数据
+            option = {
+                title: {
+                    text: '暂无数据',
+                    x: 'center',
+                    y: 'center',
+                    textStyle: {
+                        fontSize: 20,
+                        fontWeight: 'normal',
+                    }
+                }
+            }
+        } else {
+            option = {
+                dataset: [{
+                    id: 'raw',
+                    source: pesticide,
+                },
+                {
+                    id: 'pesticide',
+                    fromDatasetId: 'raw',
+                    transform: [{
+                        type: 'ecSimpleTransform:aggregate',
+                        config: {
+                        resultDimensions: [
+                            { name: 'min', from: 'value', method: 'min' },
+                            { name: 'Q1', from: 'value', method: 'Q1' },
+                            { name: 'median', from: 'value', method: 'median' },
+                            { name: 'Q3', from: 'value', method: 'Q3' },
+                            { name: 'max', from: 'value', method: 'max' },
+                            { name: 'name', from: 'name' }
+                        ],
+                        groupBy: 'name'
+                        }
+                    },
+                    {
+                        type: 'sort',
+                        config: {
+                            dimension: 'max',
+                            order: 'asc'
+                        }
+                    }]
+                }],
+                title: {
+                    text: '农药',
+                    left: 'center'
+                },
+                tooltip: {
+                    trigger: 'axis',
+                    confine: true
+                },
+                xAxis: {
+                    name: '含量(mg/kg)',
+                    nameLocation: 'middle',
+                    nameGap: 30,
+                    scale: true
+                },
+                yAxis: {
+                    type: 'category'
+                },
+                grid: {
+                    bottom: 100
+                },
+
+                dataZoom: [{
+                    type: 'inside'
+                },
+                {
+                    type: 'slider',
+                    height: 20
+                }],
+                series: [{
+                    name: '农药',
+                    type: 'boxplot',
+                    datasetId: 'pesticide',
+                    itemStyle: {
+                        color: '#b8c5f2'
+                    },
+                    encode: {
+                        x: ['min', 'Q1', 'median', 'Q3', 'max'],
+                        y: 'name',
+                        itemName: ['name'],
+                        tooltip: ['min', 'Q1', 'median', 'Q3', 'max']
+                    }
+                }]
+            };
+        }
+        option && myChart_pesticide.setOption(option);
+    }
+
+</script>
+{% endblock %}

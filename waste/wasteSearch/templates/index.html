@@ -1,0 +1,243 @@
+{% extends 'layout.html' %}
+{% load static %}
+
+{% block content %}
+<div>
+    <div class="container" style="width:1260px;height: 500px;">
+       <div style="font-size: 30px;margin-left:10px">数据统计</div>
+       <div class="">
+           <div class="col-sm-4">
+               <p style="margin-left: 0px;font-size:25px">固废类别占比</p>
+               <div id="m1" style="width:280px;height: 430px;"></div>
+           </div>
+           <div class="col-sm-4">
+               <p style="margin-left: 15px;font-size:25px">行业类别占比</p>
+               <div id="m2" style="width:450px;height: 330px;"></div>
+           </div>
+           <div class="col-sm-4">
+               <p style="margin-left: 100px;font-size:25px">固废种类统计</p>
+               <div id="m3" style="width:140px;height: 300px;; margin-left:100px"></div>
+           </div>
+       </div>
+   </div>
+
+</div>
+<div class="container" >
+    <div>
+        <div class="panel panel-default" style="margin-top: 20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title" style="text-align:left;"> 查询指定名称的固废 </h3>
+            </div>
+
+            <div style="float: left;width: 500px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="请输入固废名称"
+                            value="{{ search_data }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <a class="btn btn-success" href="/index/" style="float: right; width: 80px;">
+                <span aria-hidden="true"></span>
+                重置
+            </a>
+        </div>
+    </div>
+    <br></br>
+
+    <div class="panel panel-default">
+        <!-- Default panel contents -->
+        <div class="panel-heading">
+            <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+            固废列表
+        </div>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>废物名称</th>
+                    <th>行业分类</th>
+                    <th>产生工段</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in queryset %}
+                <tr>
+                    <td>{{ obj.固废名称 }}</td>
+                    <td>{{ obj.行业分类 }}</td>
+                    <td>{{ obj.产生工段 }}</td>
+                    <td>
+                        <a class="btn btn-primary btn-xs" href="/details/{{ obj.固废名称 }}/">详细信息</a>
+                    </td>
+                </tr>
+
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="clearfix">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+
+
+
+    
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+    <script src="{% static 'js/echarts.js' %}"></script>
+    <script src="{% static 'js/echarts-wordcloud.min.js' %}" ></script>
+
+    <script type="text/javascript">
+
+        var chartDom = document.getElementById('m1');
+        var myChart = echarts.init(chartDom);
+        var waste_type = {{waste_type | safe}};
+
+        var option;
+
+        option = {
+            tooltip: {
+                show:false
+            },
+            legend: {
+                top: '5%',
+                left: 'left'
+            },
+            series: [
+            {
+                name: '固废类别占比',
+                type: 'pie',
+                radius: ['40%', '70%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: true,
+                    position: 'inside',
+                    formatter: '{d}%',//模板变量有 {a}、{b}、{c}、{d}，分别表示系列名，数据名，数据值，百分比。{d}数据会根据value值计算百分比
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        formatter: '{b} \n {d}%',
+                        fontSize: 20,
+                    },
+                    position: 'center',
+                },
+                labelLine: {
+                    show: false
+                },
+                data: waste_type
+
+            }
+            ]
+        };
+
+        option && myChart.setOption(option);
+
+    </script>
+    <script type="text/javascript">
+        var chartDom = document.getElementById('m2');
+        var myChart = echarts.init(chartDom);
+        var category_name = {{category_name | safe}};
+        var category_data = {{category_data | safe}};
+        var option;
+
+        option = {
+            tooltip:{
+            },
+            xAxis: {
+                type: 'category',
+                data: category_name,
+                axisLabel:{
+                    interval: 0
+                },
+            },
+            yAxis: [
+                {
+                    type: 'value'
+                },
+                {
+                    type: 'value'
+                },
+            ],
+            series: [
+                {
+                    data: category_data,
+                    type: 'bar',
+                    itemStyle: {
+                        color: new echarts.graphic.LinearGradient(
+                            0, 1, 0, 0, [{//只要修改前四个参数就ok
+                                    offset: 0,
+                                    color: '#005BEA'
+                                }, //柱图渐变色
+                                {
+                                    offset: 1,
+                                    color: '#00C6FB'
+                                }
+                            ]
+                        ),
+                    }
+                },
+                {
+                    type: 'line',
+                    data: category_data
+                }
+            ]
+        };
+
+        option && myChart.setOption(option);
+    </script>
+
+    <script type="text/javascript">
+        var chartDom = document.getElementById('m3');
+        var myChart = echarts.init(chartDom);
+        var keywords = {{keywords | safe}};
+
+        var option = {
+            series: [{
+                type: 'wordCloud',
+               //maskImage: maskImage,
+                sizeRange: [15, 80],
+                rotationRange: [0, 0],
+                rotationStep: 45,
+                gridSize: 8,
+                shape: 'pentagon',
+                width: '100%',
+                height: '100%',
+                 textStyle: {
+                    normal: {
+                        color: function () {
+                            return 'rgb(' + [
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160),
+                                Math.round(Math.random() * 160)
+                            ].join(',') + ')';
+                        },
+                        fontFamily: 'sans-serif',
+                        fontWeight: 'normal'
+                    },
+                    emphasis: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: keywords
+            }]
+        };
+      option && myChart.setOption(option);
+
+    </script>
+
+{% endblock %}

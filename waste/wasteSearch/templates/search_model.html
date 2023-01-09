@@ -1,0 +1,138 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:left;"> 选择指定的模型进行溯源 </h3>
+        </div>
+
+        <div style="float: left;width: 500px;">
+            <form method="get">
+                <select class="form-control" name="modelName" id="modelName">
+                    <option value="" selected>请选择要使用的模型</option>
+                    {% for field in models %}
+                    <option value="{{field}}">{{ field }}</option>
+                    {% endfor %}
+                </select>
+                
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" id="chooseModel">切换</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+<br></br>
+<br></br>
+<div class="container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 固废溯源--{{modelname}} </h3>
+                
+            </div>
+            
+        </div>
+    </div>
+    <br></br>
+
+    <!-- 
+    <div>
+        <select class="form-control input-sm">
+            <option value="" selected>请选择标签名</option>
+            {% for field in field_dic %}
+            <option value="1">
+                {{ field }}
+            </option>
+            {% endfor %}
+        </select>
+
+    </div> -->
+
+    <form class="form-horizontal" method="get" >
+        <div id="Labels">
+
+            {% for label in labels %}
+                <div class="form-group">
+                    <label for="physicalform" class="col-sm-2 control-label">{{label}}</label>
+                    <div class="col-sm-6">
+                        <input type="text" name="labelValue" placeholder="请填写属性值" required/>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+
+        
+
+        <br></br>
+        <div class="form-group" >
+            <div class="col-sm-offset-2 col-sm-10">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary">查询</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<br></br>
+<br></br>
+<div class="container">
+    <p style="margin-top:0;margin-bottom:0;text-indent:43px;text-align:justify;text-justify:inter-ideograph;line-height:37px">
+        <span style=";font-family:仿宋;font-size:21px">
+            <span style="font-family:仿宋">
+                {{modeldetails}}
+            </span>
+        
+        </span>
+    </p>
+    
+<div>
+<br></br>
+<br></br>
+{% endblock %}
+{% block js %}
+<script type="text/javascript">
+    $('#chooseModel').click(function(e){
+        e.preventDefault();
+        var modelName = document.getElementById("modelName").value; 
+        console.log(modelName);
+        switch(modelName){
+            case "匹配度模型":
+                window.location.href = "/search/label/";
+                break;
+            case "废物产生节点溯源":
+                window.location.href = "/search/废物产生节点溯源/";
+                break;
+            case "固相热处理渣类废物溯源":
+                window.location.href = "/search/固相热处理渣类废物溯源/";
+                break;
+            case "收尘灰类废物溯源模型1":
+                window.location.href = "/search/收尘灰类废物溯源模型1/";
+                break;
+            case "收尘灰类废物溯源模型2":
+                window.location.href = "/search/收尘灰类废物溯源模型2/";
+                break;
+            case "浸出渣类废物溯源":
+                window.location.href = "/search/浸出渣类废物溯源/";
+                break;
+            case "精蒸馏残渣类废物溯源":
+                window.location.href = "/search/精蒸馏残渣类废物溯源/";
+                break;
+            case "铝灰溯源判别模型":
+                window.location.href = "/search/铝灰溯源判别模型/";
+                break;
+            case "表面处理污泥溯源判别模型":
+                window.location.href = "/search/表面处理污泥溯源判别模型/";
+                break;
+            default:
+                window.location.href = "/search/label/";
+                break;
+        }
+    });
+
+
+</script>
+{% endblock %}

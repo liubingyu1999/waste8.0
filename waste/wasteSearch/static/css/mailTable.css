@@ -1,0 +1,46 @@
+.mailTable{
+    width: 100%;
+    border-top: 1px solid #E6EAEE;
+    border-left: 1px solid #E6EAEE;
+}
+.mailTable tr td{
+    width: 200px;
+    height: 35px;
+    line-height: 25px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-bottom: 1px solid #E6EAEE;
+    border-right: 1px solid #E6EAEE;
+}
+.mailTable tr td.basic{
+    width: 200px;
+    height: 50px;
+    line-height: 25px;
+    box-sizing: border-box;
+    padding: 0 10px;
+    border-bottom: 1px solid #E6EAEE;
+    border-right: 1px solid #E6EAEE;
+}
+.mailTable tr td.column {
+    background-color: #EFF3F6;
+    color: #393C3E;
+    width: 40px;
+}
+
+.mailTable tr td.labelhead {
+    height: 350px;
+}
+
+.mailTable tr th {
+    background-color: #5298be;
+    color: #3e3f5c;
+    width: 30%;
+    height: 50px;
+    padding: 0 10px;
+}
+
+
+.basicinfo {
+    height: 800px;
+}
+

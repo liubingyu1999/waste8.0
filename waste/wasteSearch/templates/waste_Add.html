@@ -1,0 +1,897 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ title }} </h3>
+            </div>
+            <div class="panel-body">
+                <form method="post" enctype="multipart/form-data">
+
+                <div>
+                    <h4>废物基础信息</h4>
+                    <div style="border: solid 1px;width: 1100px;height:160px;" name="basic">
+                        <div class="row" >
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">废物类别</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="废物类别"  placeholder="请填写新增废物类别" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">行业分类</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="行业分类" placeholder="请填写行业分类" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">固废名称</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="wasteName" name="固废名称" placeholder="请填写固废名称" style="margin-top: 10px;" >
+                            </div>
+                        </div>
+
+                        <div class="row" >
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">颜色</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="颜色" placeholder="请填写颜色" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">气味</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="气味" placeholder="请填写气味" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">密度</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="密度" placeholder="请填写密度" style="margin-top: 10px;" >
+                            </div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">kg/m3</label>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-1"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">含水率%</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="含水率" placeholder="请填写含水率" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">pH</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="pH" placeholder="请填写pH" style="margin-top: 10px;" >
+                            </div>
+
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">形状</label>
+                            </div>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" id="wasteName" name="形状" placeholder="请填写形状" style="margin-top: 10px;" >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;">
+                    <h4>工业组成分析</h4>
+                    <div style="border: solid 1px;width: 1100px;height:200px;">
+                        <div class="row" >
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">水分</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="wasteName" name="水分" placeholder="请填写水分" style="margin-top: 10px;" >
+                            </div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">%</label>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">灰分</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="wasteName" name="灰分" placeholder="请填写灰分" style="margin-top: 10px;" >
+                            </div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">%</label>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">挥发分</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="wasteName" name="挥发分" placeholder="请填写挥发分" style="margin-top: 10px;" >
+                            </div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">%</label>
+                            </div>
+                        </div>
+                        <div class="row" >
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">固定碳</label>
+                            </div>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" id="wasteName" name="固定碳" placeholder="请填写固定碳" style="margin-top: 10px;" >
+                            </div>
+                            <div class="col-sm-1">
+                                <label for="morphology"  style="margin-top: 18px;margin-left: 8px;">%</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>元素组成</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="elementLabel"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>物象组成</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="phaseLabel"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>无机元素含量</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="pollutantLabel"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>多环芳烃</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="PAHs"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>有机污染物</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="organicLabel"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>农药</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="pesticideLabel"></div>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px;height: max-content">
+                    <h4>重金属毒性浸出浓度</h4>
+                    <div style="border: solid 1px;width: 1100px;height: max-content;">
+                        <div id="toxicLabel"></div>
+                    </div>
+                </div>
+
+                <div class="form-group" style="margin-top: 25px;margin-left: 50px;">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button id="wasteCReset" type="reset" class="btn btn-info" style="margin-right: 80px;margin-left: 150px">重置</button>
+                        <button id="wasteCommit" type="submit" class="btn btn-success">提交</button>
+
+                    </div>
+                </div>
+
+                <div  style="margin-top: 80px;font-size: 15px;margin-left: 25px">
+                    <label for="exampleInputFile" >上传固废照片</label>
+                    {% csrf_token %}
+                    <input type="file" id="exampleInputFile" name="wasteFile">
+                    <button id="wasteReset" type="submit"  class="btn btn-warning" style="margin-top: 20px;">上传</button>
+                </div>
+
+                </form>
+
+            </div>
+
+
+            </div>
+
+        </div>
+</div>
+
+    <br></br>
+
+
+
+
+
+
+{% endblock %}
+
+
+{% block js %}
+
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in elementLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>%</label>';
+        html += '</div>';
+
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#elementLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn', function () {
+
+        //添加减号
+        var $content = "";
+        $content += '<a href="javascript:;" class="delInput">';
+        $content += '<span class="glyphicon glyphicon-minus"></span>';
+        $content += '</a>';
+        $(this).parent().append($content);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in elementLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>%</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        html += '<a href="javascript:;" class="addInputReturn">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#elementLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in phaseLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>%</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn1">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#phaseLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn1', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput1">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in phaseLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>%</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        html += '<a href="javascript:;" class="addInputReturn1">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#phaseLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput1', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in pollutantLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn2" >';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#pollutantLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn2', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput2">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in pollutantLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn2">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#pollutantLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput2', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in PAHs %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>单位：mg/kg</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn3">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#PAHs").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn3', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput3">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in PAHs %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>单位：mg/kg</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        html += '<a href="javascript:;" class="addInputReturn3">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#PAHs").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput3', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in organic %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitlName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn4" >';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#organicLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn4', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput4">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in organicLabel %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitlName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn4" >';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#organicLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput4', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in pesticide %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitlName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn5" >';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#pesticideLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn5', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput5">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in pesticide %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-1 ">';
+        html += '<label>单位：</label>';
+        html += '</div>';
+        html += '<div class="col-sm-2 ">';
+        html += '<select class="form-control input-sm" name="unitlName">';
+        html += '<option value="" selected >mg/kg</option>';
+        html += '<option value="" selected >mg/L</option>';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn5" >';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#pesticideLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput5', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+        html += '<select class="form-control input-sm" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+        html += '{% for field in toxicLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>单位：mg/L</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        //加号
+        html += '<a href="javascript:;" class="addInputReturn6">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+
+        html += '</div>';
+        html += '</div>';
+        $("#toxicLabel").append(html);
+    })
+
+    /**
+    * 动态添加事件
+    */
+    $("body").on('click', '.addInputReturn6', function () {
+
+        //添加减号
+        var $content1 = "";
+        $content1 += '<a href="javascript:;" class="delInput6">';
+        $content1 += '<span class="glyphicon glyphicon-minus"></span>';
+        $content1 += '</a>';
+        $(this).parent().append($content1);
+
+        //去除加号
+        this.remove();
+
+        var html = "";
+        html += '<div class="form-group row" style="margin-top: 16px;font-size: 15px;margin-left: 100px">';
+        html += '<div class="col-sm-4 col-md-4 col-xs-4">';
+
+        html += '<select class="form-control input-sm flagHrad hardName" style="color: #555" name="LabelName">';
+        html += '<option value="" selected >请选择标签名</option>';
+
+        html += '{% for field in toxicLabels %}'
+        html += '<option value="{{field}}">{{ field }}</option>';
+        html += '{% endfor %}';
+        html += '</select>';
+
+        html += '</div>';
+        html += '<div class="col-sm-2 col-md-3 col-xs-3">';
+        html += '<input type="text" name="q" placeholder="请填写属性值" />';
+        html += '</div>';
+        html += '<div class="col-sm-2">';
+        html += '<label>单位：mg/L</label>';
+        html += '</div>';
+        html += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        html += '<a href="javascript:;" class="addInputReturn6">';
+        html += '<span class="glyphicon glyphicon-plus"></span>';
+        html += '</a>';
+        html += '</div>';
+        html += '</div>';
+
+        $("#toxicLabel").append(html);
+    })
+
+
+
+    /**
+    * 删除事件
+    */
+    $("body").on('click', '.delInput6', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+
+
+
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,497 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="panel panel-default" style="margin-top: 20px;">
+        <div class="panel-heading">
+            <h3 class="panel-title" style="text-align:left;"> 选择指定的模型进行溯源 </h3>
+        </div>
+
+        <div style="float: left;width: 500px;">
+            <form method="get">
+                <select class="form-control" name="modelName" id="modelName">
+                    <option value="" selected>请选择要使用的模型</option>
+                    {% for field in models %}
+                    <option value="{{field}}">{{ field }}</option>
+                    {% endfor %}
+                </select>
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary" id="chooseModel">切换</button>
+                </span>
+            </form>
+        </div>
+    </div>
+</div>
+<br></br>
+<br></br>
+
+<div class="container">
+    <div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"> 固废溯源--匹配度模型 </h3>
+            </div>
+            
+        </div>
+    </div>
+
+
+    <!-- 
+    <div>
+        <select class="form-control input-sm">
+            <option value="" selected>请选择标签名</option>
+            {% for field in field_dic %}
+            <option value="1">
+                {{ field }}
+            </option>
+            {% endfor %}
+        </select>
+
+    </div> -->
+
+    <form class="form-horizontal" method="get" >
+        <div id="physicalLabels">
+            <div class="panel-heading">
+                <h2 class="panel-title"> 物理指标 </h2>
+            </div>
+            <div class="form-group">
+                <label for="physicalform" class="col-sm-2 control-label">物理形态</label>
+                <div class="col-sm-3">
+                    <select class="form-control input" id="physicalform" name="physicalform">
+                        <option value="固态">固态</option>
+                        <option value="液态">液态</option>
+                        <option value="半固态">半固态</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="shape" class="col-sm-2 control-label">形状</label>
+                <div class="col-sm-3">
+                    <select class="form-control input" id="shape" name="shape" multiple="multiple">
+                        <option value="块状">块状</option>
+                        <option value="颗粒状">颗粒状</option>
+                        <option value="泥状">泥状</option>
+                        <option value="粉末状">粉末状</option>
+                        <option value="固体">固体</option>
+                        <option value="水状">水状</option>
+                        <option value="粘稠状">粘稠状</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group" name="physicalLabel">
+                <label class="col-md-2 control-label">其他</label>
+                <div class="col-sm-3">
+                    <select class="form-control input-sm" name="physicalName">
+                        <option value="" selected>请选择标签名</option>
+                        {% for field in physical_solid %}
+                        <option value="{{field}}">{{ field }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" name="physicalValue" placeholder="请填写属性值" required/>
+                </div>
+                <div class="col-sm-1 col-md-1 col-xs-1 my-icon">
+                    <a href="javascript:;" class="delInput">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="chemicalLabels">
+           
+            <div class="panel-heading">
+                <h3 class="panel-title"> 化学指标 </h3>
+            </div>
+
+            <div id="staticLabels">
+                <div class="form-group">
+                    <label for="ph" class="col-sm-2 control-label">pH</label>
+                    <div class="col-sm-3">
+                        <input type="number" oninput="if(value>14)value=14;if(value<0)value=0" name="pH" placeholder="请填写属性值" required/>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-xs-1 my-icon">
+                        <a href="javascript:;" class="delInput">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="热值(MJ/kg)" class="col-sm-2 control-label">热值(MJ/kg)</label>
+                    <div class="col-sm-3">
+                        <input type="text" name="热值(MJ/kg)" placeholder="请填写属性值" required/>
+                    </div>
+                    <div class="col-sm-1 col-md-1 col-xs-1 my-icon">
+                        <a href="javascript:;" class="delInput">
+                            <span class="glyphicon glyphicon-minus"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group" name="chemicalLabel">
+                <label class="col-md-2 control-label">其他</label>
+                <div class="col-sm-3">
+                    <select class="form-control input-sm  chemicalClass" name="chemicalClass">
+                        <option value="" selected>请选择标签类</option>
+                        {% for field in chemical_solid %}
+                        <option value="{{field}}">{{ field }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <select class="form-control input-sm" name="chemicalName">
+                        <option value="" selected>请选择标签名</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" name="chemicalValue" placeholder="请填写属性值" required/>
+                </div>
+                <div class="col-sm-1 col-md-1 col-xs-1 my-icon">
+                    <a href="javascript:;" class="delInput">
+                        <span class="glyphicon glyphicon-minus"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <br></br>
+        <div class="form-group" >
+            <div class="col-sm-offset-2 col-sm-10">
+                <button id="addPhsicalButton" type="button" class="btn btn-info">添加物理指标</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;
+                <button id="addChemicalButton" type="button" class="btn btn-info">添加化学指标</button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="submit" class="btn btn-primary">查询</button>
+            </div>
+        </div>
+        {% comment %} <button class="btn btn-default" type="submit">提交</button> {% endcomment %}
+    </form>
+
+</div>
+{% endblock %}
+
+
+{% block js %}
+{% comment %} 物理指标动态选项 {% endcomment %}
+<script type="text/javascript">
+    /**
+    * 动态添加物理指标
+    */
+    document.getElementById("addPhsicalButton").onclick = function(){
+        var physicalform = $("#physicalform").val();
+        content = "";
+        content += '<div class="form-group" name="physicalLabel">';
+        content += '<label class="col-md-2 control-label">其他</label>';
+        content += '<div class="col-sm-3">';
+        content += '<select class="form-control input-sm" name="physicalName">';
+        content += '<option value="" selected>请选择标签名</option>';
+        
+        if (physicalform == "半固态") {
+            content += '{% for field in physical_halfsolid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+        else if(physicalform == "固态") {
+            content += '{% for field in physical_solid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        } else {
+            content += '{% for field in physical_liquid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+
+        content += '</select>';
+        content += '</div>';
+        content += '<div class="col-sm-4">';
+        content += '<input type="text" name="physicalValue" placeholder="请填写属性值" />';
+        content += '</div>';
+        content += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        content += '<a href="javascript:;" class="delInput">';
+        content += '<span class="glyphicon glyphicon-minus"></span>';
+        content += '</a>';
+        content += '</div>';
+        content += '</div>';
+        $("#physicalLabels").append(content);
+        
+    }
+    /**
+    * 动态添加化学指标
+    */
+    document.getElementById("addChemicalButton").onclick = function(){
+
+        var physicalform = $("#physicalform").val();
+        content = "";
+        content += '<div class="form-group" name="chemicalLabel">';
+        content += '<label class="col-md-2 control-label">其他</label>';
+        content += '<div class="col-sm-3">';
+        content += '<select class="form-control input-sm chemicalClass" name="chemicalClass">';
+        content += '<option value="" selected>请选择标签类</option>';
+        if (physicalform == "半固态") {
+            content += '{% for field in chemical_halfsolid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+        else if(physicalform == "固态") {
+            content += '{% for field in chemical_solid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        } else {
+            content += '{% for field in chemical_liquid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+        content += '</select>';
+        content += '</div>';
+        content += '<div class="col-sm-3">';
+        content += '<select class="form-control input-sm" name="chemicalName">';
+        content += '<option value="" selected>请选择标签名</option>';
+
+        content += '</select>';
+        content += '</div>';
+        content += '<div class="col-sm-3">';
+        content += '<input type="text" name="chemicalValue" placeholder="请填写属性值" required/>';
+        content += '</div>';
+        content += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        content += '<a href="javascript:;" class="delInput">';
+        content += '<span class="glyphicon glyphicon-minus"></span>';
+        content += '</a>';
+        content += '</div>';
+        content += '</div>';
+        $("#chemicalLabels").append(content);
+    }
+    /**
+    * 删除指标
+    */
+    $("body").on('click', '.delInput', function () {
+        //获取当前点击的元素的父级的父级进行删除
+        $(this).parent().parent().remove();
+    })
+    /**
+    * 物理形态改变时，更改候选指标列表，重置已选指标
+    */
+    $('#physicalform').change(function(){
+        var physicalform = $(this).val();
+        var content='';
+        content += '<option value="" selected>请选择标签名</option>';
+        if (physicalform == "半固态") {
+            content += '{% for field in physical_halfsolid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+        else if(physicalform == "固态") {
+            content += '{% for field in physical_solid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        } else {
+            content += '{% for field in physical_liquid %}'
+            content += '<option value="{{field}}">{{ field }}</option>';
+            content += '{% endfor %}';
+        }
+        var pNnodes = document.getElementsByName("physicalName");
+        for(var i = 0; i < pNnodes.length; i ++) {
+            pNnodes[i].innerHTML = content;
+        }
+        var pVnodes = document.getElementsByName("physicalValue");
+        for(var i = 0; i < pVnodes.length; i ++){
+            pVnodes[i].parentNode.innerHTML = '<input type="text" name="physicalValue" placeholder="请填写属性值" required/>';
+        }
+        var cVnodes = document.getElementsByName("chemicalValue");
+        for(var i = 0; i < cVnodes.length; i ++){
+            cVnodes[i].parentNode.innerHTML = '<input type="text" name="physicalValue" placeholder="请填写属性值" required/>';
+        }
+        var cNnodes = document.getElementsByName("chemicalName");
+        for(var i = 0; i < cNnodes.length; i ++){
+            cNnodes[i].innerHTML = '<option value="" selected>请选择标签名</option>';
+        }
+
+        var chemiContent = '';
+        chemiContent += '<div class="form-group">';
+        chemiContent += '<label for="ph" class="col-sm-2 control-label">pH</label>';
+        chemiContent += '<div class="col-sm-3">';
+        chemiContent += '<input type="number" oninput="if(value>14)value=14;if(value<0)value=0" name="pH" placeholder="请填写属性值" required/>';
+        chemiContent += '</div>';
+        chemiContent += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        chemiContent += '<a href="javascript:;" class="delInput">';
+        chemiContent += '<span class="glyphicon glyphicon-minus"></span>';
+        chemiContent += '</a>';
+        chemiContent += '</div>';
+        chemiContent += '</div>';
+        chemiContent += '<div class="form-group">';
+        chemiContent += '<label for="热值(MJ/kg)" class="col-sm-2 control-label">热值(MJ/kg)</label>';
+        chemiContent += '<div class="col-sm-3">';
+        chemiContent += '<input type="text" name="热值(MJ/kg)" placeholder="请填写属性值" required/>';
+        chemiContent += '</div>';
+        chemiContent += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+        chemiContent += '<a href="javascript:;" class="delInput">';
+        chemiContent += '<span class="glyphicon glyphicon-minus"></span>';
+        chemiContent += '</a>';
+        chemiContent += '</div>';
+        chemiContent += '</div>';
+        if(physicalform == "液态"){
+            chemiContent += '<div class="form-group">';
+            chemiContent += '<label for="COD(mg/L)" class="col-sm-2 control-label">COD(mg/L)</label>';
+            chemiContent += '<div class="col-sm-3">';
+            chemiContent += '<input type="text" name="COD(mg/L)" placeholder="请填写属性值" required/>';
+            chemiContent += '</div>';
+            chemiContent += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+            chemiContent += '<a href="javascript:;" class="delInput">';
+            chemiContent += '<span class="glyphicon glyphicon-minus"></span>';
+            chemiContent += '</a>';
+            chemiContent += '</div>';
+            chemiContent += '</div>';
+
+            var cheminodes = document.getElementsByName("chemicalClass");
+            var chemiClass = '';
+            chemiClass += '<option value="" selected>请选择标签名</option>';
+            chemiClass += '{% for field in chemical_liquid %}'
+            chemiClass += '<option value="{{field}}">{{ field }}</option>';
+            chemiClass += '{% endfor %}';
+            for(var i = 0; i < cheminodes.length; i ++) {
+                cheminodes[i].innerHTML = chemiClass;
+            }
+        }
+        else {
+            //chemiContent += '<div class="form-group">';
+            //chemiContent += '<label for="TOC(%)" class="col-sm-2 control-label">TOC(%)</label>';
+            //chemiContent += '<div class="col-sm-3">';
+            //chemiContent += '<input type="text" name="TOC(%)" placeholder="请填写属性值" required/>';
+            //chemiContent += '</div>';
+            //chemiContent += '<div class="col-sm-1 col-md-1 col-xs-1 my-icon">';
+            //chemiContent += '<a href="javascript:;" class="delInput">';
+            //chemiContent += '<span class="glyphicon glyphicon-minus"></span>';
+            //chemiContent += '</a>';
+            //chemiContent += '</div>';
+            //chemiContent += '</div>';
+
+            var cheminodes = document.getElementsByName("chemicalClass");
+            var chemiClass = '';
+            chemiClass += '<option value="" selected>请选择标签名</option>';
+            chemiClass += '{% for field in chemical_solid %}'
+            chemiClass += '<option value="{{field}}">{{ field }}</option>';
+            chemiClass += '{% endfor %}';
+            for(var i = 0; i < cheminodes.length; i ++) {
+                cheminodes[i].innerHTML = chemiClass;
+            }
+        }
+        
+        var chemiStatic = document.getElementById("staticLabels");
+        chemiStatic.innerHTML = chemiContent;
+    });
+    /**
+    * 类改变时，更新对应的指标列表
+    */
+    $("body").on("change", "[name='chemicalClass']", function() {
+        var content = '';
+        content += '<option value="" selected>请选择标签名</option>';
+        className = $(this).val();
+        switch(className) {
+            case "工业组成":
+                content += '{% for field in industriolComposition %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "元素组成":
+                content += '{% for field in elementalComposition %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "物相组成":
+                content += '{% for field in phaseComposition %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "污染物含量":
+                content += '{% for field in pollutantContent %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "毒性浸出浓度":
+                content += '{% for field in toxicLeachingConcentration %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "有机污染物":
+                content += '{% for field in organicPollutant %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "多环芳烃":
+                content += '{% for field in PAHs %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+            case "农药":
+                content += '{% for field in pesticide %}'
+                content += '<option value="{{field}}">{{ field }}</option>';
+                content += '{% endfor %}';
+                break;
+        }
+        $(this).parent().parent().children().eq(2).children().html(content);
+        var value = '<input type="text" name="chemicalValue" placeholder="请填写属性值" required/>';
+        $(this).parent().parent().children().eq(3).html(value);
+    });
+    /**
+    * 指标名改变时，重置对应输入框
+    */
+    $("[name='physicalName']").change(function(){
+        var content = '';
+        content += '<input type="text" name="physicalValue" placeholder="请填写属性值" required/>';
+        //console.log($(this));
+        $(this).parent().parent().children().eq(2).html(content);
+    });
+    $("[name='chemicalName']").change(function(){
+        var content = '';
+        content += '<input type="text" name="chemicalValue" placeholder="请填写属性值" required/>';
+        //console.log($(this));
+        $(this).parent().parent().children().eq(3).html(content);
+    });
+
+</script>
+
+<script type="text/javascript">
+    $('#chooseModel').click(function(e){
+        e.preventDefault();
+        var modelName = document.getElementById("modelName").value; 
+        console.log(modelName);
+        switch(modelName){
+            case "匹配度模型":
+                window.location.href = "/search/label/";
+                break;
+            case "废物产生节点溯源":
+                window.location.href = "/search/废物产生节点溯源/";
+                break;
+            case "固相热处理渣类废物溯源":
+                window.location.href = "/search/固相热处理渣类废物溯源/";
+                break;
+            case "收尘灰类废物溯源模型1":
+                window.location.href = "/search/收尘灰类废物溯源模型1/";
+                break;
+            case "收尘灰类废物溯源模型2":
+                window.location.href = "/search/收尘灰类废物溯源模型2/";
+                break;
+            case "浸出渣类废物溯源":
+                window.location.href = "/search/浸出渣类废物溯源/";
+                break;
+            case "精蒸馏残渣类废物溯源":
+                window.location.href = "/search/精蒸馏残渣类废物溯源/";
+                break;
+            case "铝灰溯源判别模型":
+                window.location.href = "/search/铝灰溯源判别模型/";
+                break;
+            case "表面处理污泥溯源判别模型":
+                window.location.href = "/search/表面处理污泥溯源判别模型/";
+                break;
+            default:
+                window.location.href = "/search/label/";
+                break;
+        }
+    });
+</script>
+{% endblock %}

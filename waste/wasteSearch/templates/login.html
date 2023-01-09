@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <style>
+        body{
+           margin:0px;
+           padding:0px;
+           font-family:sans-serif;
+           background: url(../static/img/login.png);
+           background-size:cover;
+ }
+        .account {
+            width: 400px;
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            box-shadow: 0 15px  25px rgba(0,0,0,.5);
+            position: absolute;
+            background: rgba(43, 39, 39, 0.8);
+            box-sizing: border-box;
+	        top: 50%;
+	        left: 50%;
+	        transform: translate(-50%,-50%);
+
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 40px;
+            padding: 20px 40px;
+        }
+        .account h2{
+            margin-top: 10px ;
+            text-align: center;
+            color: white;
+        }
+        .title h3{
+            margin-top: 200px ;
+            text-align: center;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">
+        <h3>高风险固体废物指纹特征数据库及溯源信息平台</h3>
+    </div>
+
+    <div class="account">
+
+        <h2  style="color: white;">用户登录</h2>
+        <form method="post" novalidate>
+          {% csrf_token %}
+          <div class="form-group">
+            <label style="color: white;">用户名</label>
+            {{ form.username }}
+            <span style="color: red;">{{ form.username.errors.0 }}</span>
+          </div>
+          <div class="form-group">
+            <label style="color: white;">密码</label>
+            {{ form.password }}
+            <span style="color: red;">{{ form.password.errors.0 }}</span>
+          </div>
+          <div class="form-group">
+              <label for="id_code" style="color: white;">图片验证码</label>
+              <div class="row">
+                  <div class="col-xs-7">
+                     {{ form.code }}
+                      <span style="color:red;">{{ form.code.errors.0 }}</span>
+                  </div>
+                  <div class="col-xs-5">
+                      <img id="image_code" src="/image/code/" style="width: 125px">
+                  </div>
+              </div>
+          </div>
+
+
+
+
+          <button type="submit" class="btn btn-primary" >登录</button>
+
+
+         </form>
+
+    </div>
+
+</body>
+</html>

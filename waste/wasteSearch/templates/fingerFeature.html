@@ -1,0 +1,3910 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block content %}
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+</head>
+<div>
+  <span class="glyphicon glyphicon-arrow-up" aria-hidden="true" style="position: fixed;margin-left: 1600px;margin-top: 80px;">
+      <a class="nav-link" href="#高毒性尾矿" style="color: #0f0f0f;">回到顶部</a>
+  </span>
+</div>
+<div style="float: left;margin-left: 15px;margin-top:15px;position: relative;">
+
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <a class="nav-link" href="#高毒性尾矿">高毒性尾矿</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铜尾矿渣">铜尾矿渣</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铅锌尾渣">铅锌尾渣</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#冶炼废渣">冶炼废渣</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铜火法冶炼熔炼渣">铜火法冶炼熔炼渣</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铅火法冶炼烟化炉水淬渣">铅火法冶炼烟化炉水淬渣（烟化炉渣）</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#锌湿法冶炼挥发窑渣">锌湿法冶炼挥发窑渣</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铝电解铸造工段产生的铝灰渣">铝电解铸造工段产生的铝灰渣</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#污泥">污泥</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铅火法冶炼中水处理污泥">铅火法冶炼中水处理污泥</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#锌湿法冶炼中水处理污泥">锌湿法冶炼中水处理污泥</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#硫酸法生产钛白粉时酸性废水处理过程产生的钛石膏">硫酸法生产钛白粉时酸性废水处理过程产生的钛石膏</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#生化处理污泥">2,4-D合成工艺废水处理过程中产生的生化处理污泥</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#含油污泥">含油污泥</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#煤焦化废水生化处理污泥">煤焦化废水生化处理污泥</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#镀锌废水处理污泥">镀锌废水处理污泥</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#集除尘装置产生的粉尘">集除尘装置产生的粉尘</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铜火法冶炼熔炼收尘烟灰">铜火法冶炼熔炼收尘烟灰</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#铅火法冶炼还原炉收尘烟灰">铅火法冶炼还原炉收尘烟灰</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#锌湿法冶炼原矿焙烧收尘烟灰">锌湿法冶炼原矿焙烧收尘烟灰</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#氧化铝生产铝土矿煅烧收尘烟灰">氧化铝生产铝土矿煅烧收尘烟灰</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#粉煤灰">粉煤灰</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#生活垃圾焚烧飞灰">生活垃圾焚烧飞灰</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#焚烧底渣类">焚烧底渣类</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#煤气化炉气化灰渣">煤气化炉气化灰渣</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#生活垃圾焚烧底渣">生活垃圾焚烧底渣</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#硫磺制酸工艺产生的焚硫渣">硫磺制酸工艺产生的焚硫渣</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#废酸">废酸</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#酸洗废浓硫酸">酸洗废浓硫酸</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#电镀酸洗废酸">电镀酸洗废酸</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#酸洗废硫酸">酸洗废硫酸</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#精蒸馏残渣">精蒸馏残渣</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#高温煤焦油">高温煤焦油</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#焦油渣">焦油渣</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#中低温煤沥青">中低温煤沥青</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#母液">母液</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#24滴合成过程中产生的母液">2,4-滴合成过程中产生的母液</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#2甲4氯酸合成过程产生的母液">2甲4氯酸合成过程产生的母液</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#百草枯合成过程产生的母液">百草枯合成过程产生的母液</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#苯磺隆合成过程产生的离心母液">苯磺隆合成过程产生的离心母液</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#草甘膦母液">草甘膦母液</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#过滤残渣">过滤残渣</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#碳碱法生产硼砂过程中硼镁矿碳解过滤产生的硼泥">碳碱法生产硼砂过程产生的硼泥</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#碳化法氧化镁生产过程中溶液离心分离后产生的镁渣">碳化法氧化镁生产过程中产生的镁渣</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#废催化剂">废催化剂</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#催化裂化催化剂">催化裂化催化剂</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#加氢精制废催化剂">加氢精制废催化剂</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废加氢催化剂">废加氢催化剂</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废重整催化剂">废重整催化剂</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废异构化催化剂">废异构化催化剂</a>
+                </li>
+
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#废有机溶剂">废有机溶剂</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#汽车行业废有机溶剂">汽车行业废有机溶剂</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#化工行业废有机溶剂">化工行业废有机溶剂</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#电子行业废有机溶剂">电子行业废有机溶剂</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#涂装行业废有机溶剂">涂装行业废有机溶剂</a>
+                </li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#废有机溶剂">废矿物油</a>
+            <ul class="nav flex-column">
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废淬火油">废淬火油</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废机油">废机油</a>
+                </li>
+                <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="#废润滑油">废润滑油</a>
+                </li>
+                 <li class="nav-item" style="margin-left: 20px;">
+                    <a class="nav-link" href="废矿物油">废矿物油</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    </div>
+<div class="container">
+     <div class="panel panel-primary" id="高毒性尾矿">
+        <div class="panel-heading">
+            <h3 class="panel-title">高毒性尾矿</h3>
+        </div>
+        <div class="panel-body">
+            <div id="铜尾矿渣"  style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铜尾矿渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：铜冶炼渣选矿车间尾矿过滤产生的尾渣</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>块状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>15-22%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>粗尾矿主要为大块层状结构，表面分布大量残片，结构易破碎。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/铜粗尾矿砂.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>39.5-72.9%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>3.32-18.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>1.56-18.1%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>2.2-8.8%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >三级指纹（重金属）</td>
+                        <td>Zn</td>
+                        <td> 2000-4970 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>500-985 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>300-939 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cu</td>
+                        <td>100-291 mg/kg</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div id="铅锌尾渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铅锌尾渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：铅锌冶炼工艺渣选矿车间尾矿过滤产生的尾渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>块状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>7-20%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>原尾矿表面光滑，以长块状为主，晶体特征明显，整体结构紧密，内外物质不易进行接触反应。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/铅锌尾矿-1.png' %} alt="图片加载失败">
+                    <img src={% static 'img/铅锌尾矿-2.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>37.04-39.87%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>16.31-16.51%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>8.36-36.65%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>1.37-4.46%</td>
+                    </tr>
+                    <tr>
+                        <td>矿物种类成分</td>
+                        <td>二氧化硅、白云石、铁镁榴石、硅酸钙和硅酸铝钙</td>
+                    </tr>
+                    <tr>
+                        <td>其他特征</td>
+                        <td>铅锌尾矿烧失量较高，原铅锌尾矿中矿物以石英、白云石、白云母、正长石、方解石为主，同时含有硬柱石、黄铁矿等其他矿物</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 180px;text-align: center;" class="active" >三级指纹（重金属）</td>
+                        <td>SiO2</td>
+                        <td>37.04-39.87%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>16.31-16.51%</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>300-939 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>8.36-36.65%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>1.37-4.46%</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="冶炼废渣">
+        <div class="panel-heading">
+            <h3 class="panel-title">冶炼废渣</h3>
+        </div>
+        <div class="panel-body">
+            <div id="铜火法冶炼熔炼渣"  style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铜火法冶炼熔炼渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：铜火法冶炼熔炼渣是铜火法冶炼工艺中铜精矿配料混合产生铜锍过程中产生的熔炼渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 180px;text-align: center;" class="active" >一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>≤2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>致密坚硬，表面有金属光泽，内部结构基本上为玻璃体，结构致密、硬而脆。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片1.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>30～40%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>≤10%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>≤11%</td>
+                    </tr>
+                    <tr>
+                        <td>Cu</td>
+                        <td>0.42～4.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe</td>
+                        <td>40～46%</td>
+                    </tr>
+
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >三级指纹</td>
+                        <td>粗铜熔炼渣平均含铜量</td>
+                        <td> 2.5%～3%</td>
+                    </tr>
+                    <tr>
+                        <td>熔炼渣主要成分</td>
+                        <td>Fe和SiO2，其次为Cu，还有少量的Ca、Al、Mg、Zn、Pb和S等，Fe/SiO2为1.5～1.6，渣含铜偏高，为4.5%～6%</td>
+                    </tr>
+                    <tr>
+                        <td>熔炼渣物相组成</td>
+                        <td>主要为磁铁矿、铁橄榄石、钙铁辉石及玻璃相，其次为冰铜以及硫化亚铜</td>
+                    </tr>
+                    <tr>
+                        <td>铜赋存状态</td>
+                        <td>铜主要以硫化亚铜形式存在，占总铜85%以上，其次为硫化铜，偶见金属铜及砷化铜</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4>
+                        其他
+                    </h4>
+                    <p>
+                        冰铜是最主要的铜物相，由辉铜矿（成分以硫化亚铜为主）及类斑铜矿（成分为硫化亚铜、硫化铜及硫化铁）的细密格状结构组成，
+                        在渣中的分布比较均匀，能谱分析表明其中含铜较高，含铜范围在50%～65%，平均含Cu 60%、Fe 9%~21%、S 26%~28%。
+                        熔炼渣中还可见一类铜铁硫化相，成分接近原料中黄铜矿矿物成分，铁含量明显偏高，含铜为35%~40%，含铁约30%，在渣中的分布不均匀，通常在渣包上部和侧上部可见。
+                    </p>
+                    <p>
+                        铜熔炼渣铜物相中主要以硫化铜为主，绝大多数占到总铜分布率的60%-87.13%，氧化铜则处于5～60%之间，金属铜则处于9～25%之间，个别炉渣其它铜达到10%以上。
+                        铁物相中以铁橄榄石和磁铁矿为主，二者之和占到总铁分布率的80%以上，其中铁橄榄石处于8～65%之间，磁铁矿则处于33～45%之间，个别赤铁矿和褐铁矿分布率较高，达到57.43%。
+                    </p>
+                </div>
+
+            </div>
+            <div id="铅火法冶炼烟化炉水淬渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铅火法冶炼烟化炉水淬渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：火法炼铅（富氧熔炼+直接还原工艺及富氧闪速熔炼工艺）炉渣经烟化处理后的熔体再经水淬而产生的弃渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>≤5%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>大多呈尖角形且较脆，非晶态，粒度在2~20 mm之间。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片2.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Fe2O3</td>
+                        <td>30-40%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>10-15%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>20-30%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>4.5-6.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>0.5-5%</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>4-20%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        烟化炉渣是多种氧化物组成的高温熔体，这种熔体主要由炼铅原料中的脉石氧化物和冶金过程中生成的铁、锌的氧化物组成，其中Pb和Zn的含量约为0.5-5%和4-20%。其中Fe、Si、Ca、Al的氧化物总量达80%，此外还含有残留的Cu、Zn、Pb、Cr和Ba等重金属元素。铅主要以金属铅的形式存在，锌主要以锌的硅酸盐及铁酸盐形式存在，铁主要以铁酸锌及游离氧化亚铁形式存在。
+                    </p>
+                </div>
+
+            </div>
+            <div id="锌湿法冶炼挥发窑渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">锌湿法冶炼挥发窑渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：锌湿法冶炼的浸出渣经挥发窑高温回收氧化锌处理工序产生的窑渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 180px;text-align: center;" class="active" >一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>≤5%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>块状大，硬度高，颗粒形貌各异。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片3.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="10" style="line-height: 350px;text-align: center;" class="active" >二级指纹</td>
+                        <td>C</td>
+                        <td>11.91%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe</td>
+                        <td>43.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Cu</td>
+                        <td>0.79%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>4.5-6.5%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>23.79%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>10.11%</td>
+                    </tr>
+                     <tr>
+                        <td>Cu</td>
+                        <td>0.79%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>30-35%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>15-17%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>4-6%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        主要由过冷的高温氧化物熔体和少量FeS、ZnS和Fe组成，即以硫化物相为主，含有残留的Zn、Pb等多种重金属元素。有价金属In、Cu、Zn、Ag含量较低，杂质氧化硅含量大于10%，属于高铁高硅废弃渣。矿物相主要是钙铁辉石：45-49%；石英：18-22%；石膏：12-16%；磁铁矿：7-11%。
+                    </p>
+                    <p>
+                        该窑渣有价金属成分以Fe、Zn、Cu、In等为主，其中Fe含量大于30%，其它有价金属含量相对较低，杂质氧化硅含量大于10%，属于高铁高硅废弃渣。窑渣中可鉴别的主要物相组成为ZnS、FeS、CuS、ZnFeO4、SiO2及Fe3O4，即该窑渣主要以硫化物相为主。
+                    </p>
+                </div>
+
+
+            </div>
+            <div id="铝电解铸造工段产生的铝灰渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铝电解铸造工段产生的铝灰渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：电解铝铸造过程熔体表面产生的铝灰渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>粉末颗粒状。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片4.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="3" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Al2O3</td>
+                        <td>80.98-84%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>2-4.22%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>1-3.65%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >三级指纹</td>
+                        <td>铝</td>
+                        <td>38-42%</td>
+                    <tr>
+                        <td>刚玉</td>
+                        <td>13-17%</td>
+                    </tr>
+                    <tr>
+                        <td>方镁石</td>
+                        <td>10-14%</td>
+                    </tr>
+                    <tr>
+                        <td>尖晶石</td>
+                        <td>9-11%</td>
+                    </tr>
+                    <tr>
+                        <td>氮化铝</td>
+                        <td>6-8%</td>
+                    </tr>
+                    <tr>
+                        <td>其他特征</td>
+                        <td>遇水反应释放氧气，受潮易自燃。</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+     </div>
+     <div class="panel panel-primary" id="污泥">
+        <div class="panel-heading">
+            <h3 class="panel-title">污泥</h3>
+        </div>
+        <div class="panel-body">
+            <div id="铅火法冶炼中水处理污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铅火法冶炼中水处理污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：火法炼铅（如富氧熔炼+直接还原工艺及富氧闪速熔炼工艺等）中水处理工段产生的中水处理污泥。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>暗红色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>泥状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>40%-70%</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>有刺激性酸味</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>连续泥块状</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片5.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Fe2O3</td>
+                        <td>44.37-48%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td> 3.37-7%</td>
+                    </tr>
+                    <tr>
+                        <td>ZnO</td>
+                        <td>1.32-1.58%</td>
+                    </tr>
+                    <tr>
+                        <td>TiO2</td>
+                        <td>0.936-1.2%</td>
+                    </tr>
+                    <tr>
+                        <td>As2O3</td>
+                        <td>0.803-0.98%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="8" style="line-height: 240px;text-align: center;" class="active" >三级指纹</td>
+                        <td>方解石</td>
+                        <td>96-100%</td>
+                    <tr>
+                        <td>Cu</td>
+                        <td>147.95-151 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>568.4-572 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>5178.07-5182 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>386.04-390 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>1060-1064.4 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>772.55-776 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>37.05-41 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="锌湿法冶炼中水处理污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">锌湿法冶炼中水处理污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：湿法炼锌（如常规湿法炼锌工艺等）中水处理工段产生的中水处理污泥。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>40%-60%</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>有刺激性酸味</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>连续泥块状</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片6.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td>CaO</td>
+                        <td>25.22-29%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>10.54-14%</td>
+                    </tr>
+                    <tr>
+                        <td>ZnO</td>
+                        <td>3.31-7%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>1.4-1.8%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="8" style="line-height: 240px;text-align: center;" class="active" >三级指纹</td>
+                        <td>方解石</td>
+                        <td>96-100%</td>
+                    <tr>
+                        <td>Cu</td>
+                        <td>354.23-531.35 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>165.78-248.67 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>31584.3-47376.45 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>2244.56-3366.84 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>6986.89-10480.33 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>757.25-1135.88 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>312.91-469.36 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="硫酸法生产钛白粉时酸性废水处理过程产生的钛石膏" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">硫酸法生产钛白粉时酸性废水处理过程产生的钛石膏</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：硫酸法生产钛白粉时，酸性废水经过与石灰石、电石泥、钙粉等碱性物质中和后，产生的工业副产钛石膏。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>40%-70%</td>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>9.03</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>团聚泥状结构</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/钛石膏.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >二级指纹</td>
+                        <td>CaSO4</td>
+                        <td>70-75%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>24-30.46%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>5-7.79%</td>
+                    </tr>
+                    <tr>
+                        <td>TiO2</td>
+                        <td>1-2.62%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>2-2.01%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>0.87-1%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>0.82-1%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >三级指纹</td>
+                        <td>Ca</td>
+                        <td>230714.289mg/kg</td>
+                    <tr>
+                        <td>Na</td>
+                        <td>2380.952mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Mg</td>
+                        <td>7539.683mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Al</td>
+                        <td>5632.927mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="生化处理污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">2,4-D合成工艺废水处理过程中产生的生化处理污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：2,4-D合成工艺废水处理过程中产生的生化处理污泥。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态或半固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>60%-95%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>泥状、团聚</td>
+                    </tr>
+                </table>
+
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        废水中除含有农药和中间体外，还含有有机磷或有机氯、酚、砷、汞等有毒物质以及许多生物难以降解的物质。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >三级指纹</td>
+                        <td>2,4-D</td>
+                        <td>0.01-20 mg/kg</td>
+                    <tr>
+                        <td>2,4-二氯苯酚</td>
+                        <td>0.01-6.5 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>2,4-滴钠</td>
+                        <td>0.01-3.5 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>氯乙酸</td>
+                        <td>0.01-10 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>甲苯</td>
+                        <td>0.01-10 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="含油污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">含油污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：石油炼制过程中产生的含油污泥（污水处理隔油池产生的油泥，浮选池产的浮渣）。包括罐底泥、槽底泥、含油沉积物、浮渣等。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>40％～90％</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>含油污泥具有粗糙的表面纹理和丰富的孔结构，表面附着细小颗粒，形成絮状结构</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 400px;margin-bottom: 30px;">
+                    <img src={% static 'img/含油污泥.png' %} alt="图片加载失败">
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        通常含油率在10％～50％之间，主要含有石油溶剂和石油烃。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                     <td rowspan="8" style="line-height: 240px;text-align: center;" class="active" >三级指纹</td>
+                        <td>Cu</td>
+                        <td>200-493.15mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>20-40.16mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td> 100-204mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>60-129.53mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>萘</td>
+                        <td>1000-2610.1mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芴</td>
+                        <td>100-165.55mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>蒽</td>
+                        <td>120-238.1mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芘</td>
+                        <td>10-18.4 mg/kg</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        总结
+                    </h4>
+                    <p>
+                        我国含油污泥中的石油烃(TPH)量一般在5%～50%，含固体颗粒物量5%～46%,含水率一般为35%～90%，甚至更高，同时也含有大量胶质、沥青质以及苯系物、蒽、酚、芘等有毒有害物质。
+                    </p>
+                </div>
+
+            </div>
+            <div id="煤焦化废水生化处理污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">煤焦化废水生化处理污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：煤化工废水处理污泥产生于煤化工生产脱水脱渣、焦油蒸馏、粗酚提取等各个工段废水处理过程。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>黑褐色</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>60-90%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>泥状、团聚</td>
+                    </tr>
+                </table>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="10" style="line-height: 300px;text-align: center;" class="active" >二级指纹</td>
+                        <td>挥发分</td>
+                        <td>47.48-58.71%</td>
+                    </tr>
+                    <tr>
+                        <td>灰分</td>
+                        <td>4.12-29.12%</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>14.79-33.76%</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>2.06-6.42%</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>16.67-69.27%</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>1.9-2.42%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>36.75-73.76%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>1.2-15.6%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>2.84-4.99%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>0.39-1.66%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="16" style="line-height: 480px;text-align: center;" class="active" >三级指纹</td>
+                        <td>萘</td>
+                        <td>28.74-55.16 mg/kg</td>
+                    <tr>
+                        <td>苊烯</td>
+                        <td>68.5-160.51mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苊</td>
+                        <td>29.63-126.83mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芴</td>
+                        <td>30.04-102.53mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>菲</td>
+                        <td>65.3-297.03 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>蒽</td>
+                        <td>20.82-159.2mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>荧蒽</td>
+                        <td>41.29-188.9mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芘</td>
+                        <td>20.3-188.9mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并[a]蒽</td>
+                        <td>27.4-187.36mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>䓛</td>
+                        <td>55.02-293.48mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并[b]荧蒽</td>
+                        <td>43.4-67.3mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并[k]荧蒽</td>
+                        <td>18.9-80.2mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并[a]芘</td>
+                        <td>50.8-126.7mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>茚并[1,2,3-cd]芘</td>
+                        <td>31.06-80.45mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>二苯并[a,h]蒽</td>
+                        <td>19.27-37.7mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并[ghi]苝</td>
+                        <td>30.9-93.3mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="镀锌废水处理污泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">镀锌废水处理污泥</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;">产生工段：镀锌过程产生的废水处理污泥。电镀污泥主要是各种重金属的氢氧化物或硫化物沉淀，含有多种高浓度的重金属，如Cu、Ni、Zn、Cr等。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>棕黑色</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>泥状</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >二级指纹</td>
+                        <td>ZnO</td>
+                        <td>8-16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>18-23.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>10-14.8%</td>
+                    </tr>
+                    <tr>
+                        <td>ZnO</td>
+                        <td>8-16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>8-11.43%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>5-9.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>6-10.75%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >三级指纹</td>
+                        <td>ZnO</td>
+                        <td>8-16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>18-23.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>10-14.8%</td>
+                    </tr>
+                    <tr>
+                        <td>ZnO</td>
+                        <td>8-16.7%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>8-11.43%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>5-9.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>6-10.75%</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+     </div>
+     <div class="panel panel-primary" id="集除尘装置产生的粉尘">
+        <div class="panel-heading">
+            <h3 class="panel-title">集除尘装置产生的粉尘</h3>
+        </div>
+        <div class="panel-body">
+            <div id="铜火法冶炼熔炼收尘烟灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铜火法冶炼熔炼收尘烟灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：火法炼铜（如双闪工艺及双底吹连续炼铜工艺等）熔炼、吹炼、精炼工段烟气各收尘设备产生的收尘烟灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><0.3%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>细粉末，无粗颗粒。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片8.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Pb</td>
+                        <td>29.66-33%</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>5.92-9%</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>4.04-8%</td>
+                    </tr>
+                    <tr>
+                        <td>Cu</td>
+                        <td>3-5.05%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="12" style="line-height: 360px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >物相组成</td>
+                        <td>铅矾</td>
+                        <td>35-39%</td>
+                    <tr>
+                        <td>白砷石</td>
+                        <td>34-38%</td>
+                    </tr>
+                    <tr>
+                        <td>氯铅矿</td>
+                        <td>10-14%</td>
+                    </tr>
+                    <tr>
+                        <td>黄铜矿</td>
+                        <td>7-11%</td>
+                    </tr>
+                    <tr>
+                        <td>As2O5</td>
+                        <td>:5-9%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >元素组成</td>
+                        <td>Cu</td>
+                        <td>78355.4-78359 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>26180.42-26186 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>40859.65-49861 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>19065.05-19069 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>61050.17-61056 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>56973.63-56977</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>5216.95-5220 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="铅火法冶炼还原炉收尘烟灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">铅火法冶炼还原炉收尘烟灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：火法炼铅（如富氧熔炼+直接还原工艺及富氧闪速熔炼工艺等）熔炼炉、还原炉、烟化炉工段烟气各收尘设备产生的收尘烟灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>细粉末，无粗颗粒。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片9.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Pb</td>
+                        <td>54.81-58%</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>18.46-22%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe</td>
+                        <td>8.6-12%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="11" style="line-height: 330px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >物相组成</td>
+                        <td>铅矾</td>
+                        <td>45-47%</td>
+                    <tr>
+                        <td>红锌矿</td>
+                        <td>36-40%</td>
+                    </tr>
+                    <tr>
+                        <td>闪锌矿</td>
+                        <td>6-10%</td>
+                    </tr>
+                    <tr>
+                        <td>方铅矿</td>
+                        <td>1-3%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >元素组成</td>
+                        <td>Cu</td>
+                        <td>12695.2-12699 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>15123.38-15127 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>42696.4-41700 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>10938.94-10942 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>34794.97-34798 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>3361.91-3365 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>787.15-791 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="锌湿法冶炼原矿焙烧收尘烟灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">锌湿法冶炼原矿焙烧收尘烟灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：湿法炼锌（如常规湿法炼锌工艺等）沸腾焙烧工段烟气收尘设备产生的收尘烟灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>细粉末，无粗颗粒。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片10.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="2" style="line-height: 60px;text-align: center;" class="active" >二级指纹</td>
+                        <td>ZnO</td>
+                        <td>70.36-74%</td>
+                    </tr>
+                    <tr>
+                        <td>Cl</td>
+                        <td>3.89-7%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="10" style="line-height: 300px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >物相组成</td>
+                        <td>红锌矿</td>
+                        <td>63-67%</td>
+                    <tr>
+                        <td>纤锌矿</td>
+                        <td>6-10%</td>
+                    </tr>
+                    <tr>
+                        <td>锌</td>
+                        <td>7-11%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >元素组成</td>
+                        <td>Cu</td>
+                        <td>671.58-1007.37 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td> 54.03-81.04 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>35682.63-53523.96 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>874.32-1311.49 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>2775.99-4163.99 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>165.07-247.61 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>51.47-77.21 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="氧化铝生产铝土矿煅烧收尘烟灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">氧化铝生产铝土矿煅烧收尘烟灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：氧化铝生产（如拜耳法生产氧化铝工艺及碱石灰烧结法生产氧化铝工艺等）煅烧过程产生的收尘烟灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>灰褐色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>粉末状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>浸出液呈碱性</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>细粉末，无粗颗粒。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/图片12.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Al2O3</td>
+                        <td>29.66-33%</td>
+                    </tr>
+                    <tr>
+                        <td>Cl</td>
+                        <td>10.24-14%</td>
+                    </tr>
+                    <tr>
+                        <td>Na2O</td>
+                        <td>4.92-8%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>2.57-5%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>3.53-5%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="13" style="line-height: 390px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >物相组成</td>
+                        <td>尖晶石</td>
+                        <td>20-24%</td>
+                    <tr>
+                        <td>石盐</td>
+                        <td>18-22%</td>
+                    </tr>
+                    <tr>
+                        <td>刚玉</td>
+                        <td>15-19%</td>
+                    </tr>
+                    <tr>
+                        <td>冰晶石</td>
+                        <td>10-12%</td>
+                    </tr>
+                    <tr>
+                        <td>氮化铝</td>
+                        <td>8-10%</td>
+                    </tr>
+                    <tr>
+                        <td>β-氧化铝</td>
+                        <td>6-9%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >元素组成</td>
+                        <td>Cu</td>
+                        <td>80.15-84 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>17.18-21 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>438.24-442 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>305.19-309 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td> 963.17-967 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>89.87-93 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ba</td>
+                        <td>58.82-62 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="粉煤灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">粉煤灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：煤气化炉气化过程产生的粉煤灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>灰黑色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>粉末状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>多孔型蜂窝状，外观类似水泥。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/粉煤灰.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>247.36-50.07%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>14.18-30.85%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>6.8-14.52%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>9.37-10.8%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>1-1.92%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                       物相组成表现为晶体矿物和非晶体矿物的混合物，一般晶体矿物为石英、莫来石、氧化铁、生石灰以及石膏等，非晶体矿物为玻璃体、无定形碳和次生褐铁矿，其中玻璃体含量占50%以上。
+                    </p>
+                </div>
+
+            </div>
+            <div id="生活垃圾焚烧飞灰" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">生活垃圾焚烧飞灰</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：生活垃圾焚烧过程烟气净化系统捕集物和烟道及烟囱底部沉降的底灰。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>灰白色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>粉末状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>表面光滑，微孔较小，部分因在熔融状态下互相碰撞而粘连，成为表面粗糙、棱角较多的蜂窝状组合粒子。</td>
+                    </tr>
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/垃圾焚烧飞灰.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>10-28.17%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>5.25-16.07%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>19.6-40.34%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>3.85-14%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>2.09-10.1%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="8" style="line-height: 240px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="3" style="line-height: 150px;text-align: center;" class="active" >物相组成</td>
+                        <td>玻璃体</td>
+                        <td>50%～80%</td>
+                    <tr>
+                        <td>晶体矿物</td>
+                        <td>莫来石、α-石英、方解石、钙长石、硅酸钙、赤铁矿和磁铁矿等</td>
+                    </tr>
+                    <tr>
+                        <td>未燃的碳</td>
+                        <td>少量</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >元素组成</td>
+                        <td>Cu</td>
+                        <td>501-1098 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>587-2628 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>1856-8978 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Hg</td>
+                        <td>25-650 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>124-493 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+        </div>
+     </div>
+     <div class="panel panel-primary" id="焚烧底渣类">
+        <div class="panel-heading">
+            <h3 class="panel-title">焚烧底渣类</h3>
+        </div>
+        <div class="panel-body">
+            <div id="煤气化炉气化灰渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">煤气化炉气化灰渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：煤气化是煤或煤焦在高温下，通入氧气、水蒸气或氢气等气化剂，经过化学反应使煤或煤焦的可燃部分生成合成气的过程。煤在气化炉中经历了燃烧、气化等热转化过程后，煤中的矿物质和其他无机组分先后经历了破裂、团聚和熔融等过程，最终与部分未参与反应的煤或煤焦形成灰渣。煤气化渣分为粗渣和细渣，从气化炉排渣口获得的气化渣通常称为粗渣，随合成气离开的飞灰称为细渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.01-2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>颗粒状、熔融玻璃状。</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        补充说明
+                    </h4>
+                    <p>
+                        炉底灰渣结构相对致密，表面几乎观察不到孔结构的存在，且其表面附着有大量的小颗粒物质，其中部分小颗粒物质已发生了明显的熔融团聚现象。虽然气化渣的矿物质在高温下容易发生灰熔融聚合，而其中残炭在一定程度上阻止了这种聚合，从而形成了一粒粒矿物质小球体，其中的残碳始终以絮状无定型形态存在，并不和矿物质一起形成小球体。
+                    </p>
+                </div>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/煤气化炉渣.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="8" style="line-height: 240px;text-align: center;" class="active" >二级指纹</td>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >典型成分</td>
+                        <td>SiO2</td>
+                        <td>24.09-42.73%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>12.72-27.07%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>7.49-23.9%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>5.88-15.04%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>0.9-2.43%</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >主要成分</td>
+                        <td>元素组成</td>
+                        <td>硅、铝和铁，但还含有一定量的钙、镁、钾、钠、硫，以及硼、磷、锰、铜、锌、铝、钻等微量元素</td>
+                    </tr>
+                    <tr>
+                        <td>活性磷</td>
+                        <td>10-200 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>活性钾</td>
+                        <td>10-100 mg/kg</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        矿物相主要以透辉石（Ca(Mg,Al)(Si,Al)2O6）、钙铝黄长石(Ca2Al2SiO7)、硫酸钙(CaSO4)、钙铁辉石(CaFe(Si2O6))、氧化铁(Fe2O3)、钾芒硝(K3Na(SO4)2)、镁铝柱石(Mg3Al2(SiO4)3)、辉石(Ca(Fe,Mg)Si2O6)等形式存在。
+                    </p>
+                </div>
+
+            </div>
+            <div id="生活垃圾焚烧底渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">生活垃圾焚烧底渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：生活垃圾焚烧过程产生的焚烧底渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>颗粒状</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>深灰色</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.01-2%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>底渣是由完全中空的球体或者内部包有数量众多的小的球形颗粒，细颗粒状，多孔且质地松散。</td>
+                    </tr>
+                </table>
+
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/生活垃圾焚烧底渣.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>SiO2</td>
+                        <td>256.22-65.1%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>15.29-23.73%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>7.49-23.9%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>3.04-6.23%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>5.96-7.23%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td> 0.59-1.16%</td>
+                    </tr>
+
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="1" style="line-height: 30px;text-align: center;" class="active" >矿物</td>
+                        <td>矿物组成</td>
+                        <td>硅酸盐（钙黄长石、斜灰石、透辉石）、碳酸盐（方解石）、氧化物（石英、赤铁矿等）以及一些其他盐类（氯化物和硫酸盐）等。</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >重金属</td>
+                        <td>Cu</td>
+                        <td>168.83-4800.95 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>226.07-5400.83 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>402.68-6200.37 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>14.27-40.32 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>As</td>
+                        <td>3.41-80.04 mg/kg</td>
+                    </tr>
+
+                </table>
+
+            </div>
+            <div id="硫磺制酸工艺产生的焚硫渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">硫磺制酸工艺产生的焚硫渣</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：硫磺制酸工艺焚硫工序沉淀隔渣过滤产生的焚硫渣。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><5%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>表面粗糙有气孔。</td>
+                    </tr>
+                </table>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >典型成分</td>
+                        <td>Al2O3</td>
+                        <td>20.03-27.81%</td>
+                    </tr>
+                    <tr>
+                        <td>TiO2</td>
+                        <td>5.13-6.09%</td>
+                    </tr>
+                    <tr>
+                        <td>K2O</td>
+                        <td> 1.23%</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="1" style="line-height: 30px;text-align: center;" class="active" >废渣成分</td>
+                        <td>成分组成</td>
+                        <td>主要为硫磺、Fe、硅藻土及其它杂质</td>
+                    </tr>
+
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 180px;text-align: center;" class="active" >三级指纹</td>
+                        <td>Cu浸出浓度</td>
+                        <td>0.446-0.769mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>Pb浸出浓度</td>
+                        <td>0.032-0.592mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>Zn浸出浓度</td>
+                        <td>6.749-35.49 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>As浸出浓度</td>
+                        <td>0.0084-0.015 mg/L</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="废酸">
+        <div class="panel-heading">
+            <h3 class="panel-title">废酸</h3>
+        </div>
+        <div class="panel-body">
+            <div id="酸洗废浓硫酸" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">酸洗废浓硫酸</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：晶片制造业工艺。废酸产生的环节是98.5%的浓硫酸酸洗晶片去胶，这里用到的胶一般是UV1001光敏胶，产生的废酸浓度为80%左右，含有少量浓硫酸氧化胶后产生的碳，含有微量重金属是在晶片切割时混入，废酸纯度较高、浓度较大。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液体</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        多数废酸中重金属含量Pb、Cu、Zn、Ni等均较低，含量主要分布范围在1-11 mg/L。
+                    </p>
+                </div>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        废酸浓度高，纯度大，重金属含量低小于10 mg/L。
+                    </p>
+                </div>
+
+            </div>
+            <div id="电镀酸洗废酸" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">电镀酸洗废酸</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：电镀酸洗产生的废酸也是废酸的主要产生来源，主要用于电镀前除锈和电镀后清洗，目的是为了使镀件表面更加整齐光滑。这类清洗废酸的特点是废酸浓度在pH=0.7到6mol/L之间，重金属含量较高，102-103mg/L之间。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液体。</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        多数废酸中重金属含量均较低，含量主要分布范围在1-11mg/L。
+                    </p>
+                </div>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                       废酸H+浓度在0.7到6 mol/L之间，重金属含量100 mg/L到1000 mg/L之间。
+                    </p>
+                </div>
+            </div>
+            <div id="酸洗废硫酸" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">酸洗废硫酸</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：硫酸法钛白粉生产过程中产生的废硫酸。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液体。</td>
+                    </tr>
+                </table>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >二级指纹</td>
+                        <td>Fe</td>
+                        <td>1-3.97%</td>
+                    </tr>
+                    <tr>
+                        <td>Mg</td>
+                        <td>0.451-0.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Ti</td>
+                        <td>0.19-0.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Al</td>
+                        <td>0.095-0.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Ca</td>
+                        <td>0.078-0.09%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >三级指纹</td>
+                        <td>Fe</td>
+                        <td>1-3.97%</td>
+                    </tr>
+                    <tr>
+                        <td>Mg</td>
+                        <td>0.451-0.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Ti</td>
+                        <td>0.19-0.3%</td>
+                    </tr>
+                    <tr>
+                        <td>Al</td>
+                        <td>0.095-0.5%</td>
+                    </tr>
+                    <tr>
+                        <td>Ca</td>
+                        <td>0.078-0.09%</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="精蒸馏残渣">
+        <div class="panel-heading">
+            <h3 class="panel-title">精蒸馏残渣</h3>
+        </div>
+        <div class="panel-body">
+            <div id="高温煤焦油" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">高温煤焦油</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        煤焦油，是煤炭干馏时生成的具有刺激性臭味的黑色或黑褐色粘稠状液体。按照热解温度的不同可把煤焦油大致分为3类，即低温煤焦油（500-700℃）、中温煤焦油（700-900℃）和高温煤焦油（900-1000℃）。在焦炭生产中得到的煤焦油属于高温煤焦油，它是粗煤气冷却过程中冷凝、分离出来的焦炉煤气净化产品之一。
+                    </p>
+                    <p>
+                        煤焦油是一种高芳香度的碳氢化合物的复杂混合物，绝大部分为带侧链或不带侧链的多环、稠环化合物和含氧、硫、氮的杂环化合物，并含有少量脂肪烃、环烷烃和不饱和烃，还夹带有煤尘、焦尘和热解炭。刚回收的煤焦油还含有5%左右的溶有多种无机盐和其他杂质的水分。密度和甲苯不溶物含量，是煤焦油质量指标中最重要的两项，一般范围分别为1.13～1.22 g/cm3和3.5～9%。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td><5%</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>黏稠状，高温煤焦油相对密度大于1.0</td>
+                    </tr>
+                    <tr>
+                        <td>其他特征</td>
+                        <td>含大量沥青</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td rowspan="1" style="line-height: 90px;text-align: center;" class="active" >典型成分</td>
+                        <td>挥发分含量</td>
+                        <td>89.4-95.05%</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >主要成分</td>
+                        <td>C</td>
+                        <td>73.11-84.97%</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>6.5-11.53%</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>7.4-18.58%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="22" style="line-height: 660px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="11" style="line-height: 330px;text-align: center;" class="active" >质量分数≥1.0%的化合物</td>
+                        <td>萘</td>
+                        <td>10.0%</td>
+                    </tr>
+                    <tr>
+                        <td>菲</td>
+                        <td>5.0%</td>
+                    </tr>
+                    <tr>
+                        <td>荧蒽</td>
+                        <td>3.3%</td>
+                    </tr>
+                    <tr>
+                        <td>芘</td>
+                        <td>2.1%</td>
+                    </tr>
+                    <tr>
+                        <td>苊烯</td>
+                        <td>2.0%</td>
+                    </tr>
+                    <tr>
+                        <td>芴</td>
+                        <td>2.0%</td>
+                    </tr>
+                    <tr>
+                        <td>蒽</td>
+                        <td>1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>2-甲基萘</td>
+                        <td>1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>咔唑</td>
+                        <td>1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>茚</td>
+                        <td>1.0%</td>
+                    </tr>
+                    <tr>
+                        <td>氧芴</td>
+                        <td>1.0%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >高温煤焦油含量</td>
+                        <td>沥青</td>
+                        <td>50%~55%</td>
+                    </tr>
+                    <tr>
+                        <td>蒽油</td>
+                        <td>20%~24%</td>
+                    </tr>
+                    <tr>
+                        <td>洗油</td>
+                        <td>6%~9%</td>
+                    </tr>
+                    <tr>
+                        <td>萘油</td>
+                        <td>9%~12%</td>
+                    </tr>
+                    <tr>
+                        <td>酚油</td>
+                        <td>2%~4%</td>
+                    </tr>
+                    <tr>
+                        <td>轻油</td>
+                        <td>0.5%~1%</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >高温煤焦油其他分类</td>
+                        <td>中性油</td>
+                        <td>35-40%，中性油成分为芳烃</td>
+                    </tr>
+                    <tr>
+                        <td>酚类</td>
+                        <td>1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>焦油盐类</td>
+                        <td>2%</td>
+                    </tr>
+                    <tr>
+                        <td>沥青</td>
+                        <td>57%</td>
+                    </tr>
+                    <tr>
+                        <td>游离碳</td>
+                        <td>4-10%</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div id="焦油渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">焦油渣</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        焦油渣是炼焦生产过程中产生的粘稠状、易粘结的废渣，主要成分有焦粉、煤尘和煤焦油、沥青。主要来源于机械化焦油氨水澄清槽、超级离心机和焦油贮槽。
+                    </p>
+                    <p>
+                        荒煤气中的焦油氨水混合物在气液分离器中进行气液分离。液相首先进入焦油渣预分离器后又进入焦油氨水澄清槽进行分离，分离为3层，最上层是氨水，中间层是高温煤焦油，最下层是焦油渣。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>机械化澄清槽焦油渣为半固体物质,超级离心机焦油渣为半液体物质，焦油贮槽焦油渣稠度介于二者之间。</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>黑色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>泥沙状</td>
+                    </tr>
+                    <tr>
+                        <td>密度</td>
+                        <td>1270-1443 kg/m3</td>
+                    </tr>
+                    <tr>
+                        <td>气孔率</td>
+                        <td>63%</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="9" style="line-height: 270px;text-align: center;" class="active" >二级指纹</td>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >典型成分</td>
+                        <td>挥发分含量</td>
+                        <td>32-66.76%</td>
+                    </tr>
+                    <tr>
+                        <td>固定碳</td>
+                        <td>60%</td>
+                    </tr>
+                    <tr>
+                        <td>灰分</td>
+                        <td>2.15-9.039%</td>
+                    </tr>
+                    <tr>
+                        <td>热值</td>
+                        <td>29.78-32.67 MJ/kg</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >主要成分</td>
+                        <td>C</td>
+                        <td>56.46-82.64%</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>1.41-6.01%</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>0.8-14.25%</td>
+                    </tr>
+                    <tr>
+                        <td>N</td>
+                        <td>0.9-1.66%</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>1.6%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                       中温焦油初沉渣中的多环芳烃总量高达9638 mg/kg，其中苯并[a]芘浓度值为1138 mg/kg。中温焦油初沉渣中的多环芳烃以高环、中环为主，分别占58.93和32.97%。氧化态（OXI）和残渣态（RES）重金属含量较高。
+                    </p>
+                    <p>
+                        焦油渣类固废的PAHs 总量为 9638~104885 mg/kg，高温煤焦油回收产生的焦油渣 PAHs 总量大于中低温煤焦油回收产生的焦油渣。以萘、苊烯、芴、菲、荧蒽、芘等单体PAHs为主，强致癌物苯并[a]芘含量分别为405-1138 mg/kg。
+                    </p>
+                </div>
+            </div>
+            <div id="中低温煤沥青" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">中低温煤沥青</p>
+                </blockquote>
+                <h4 style="margin-top: 20px; margin-left: 20px;margin-right: 20px;">产生工段：煤沥青产生于煤焦油的深加工过程，煤焦油蒸馏提取馏分（如轻油、酚油、萘油、洗油和蒽油等）后的残留物。</h4>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固体</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>黑褐色</td>
+                    </tr>
+                    <tr>
+                        <td>熔点</td>
+                        <td>无固定的熔点，呈玻璃相，受热后软化继而熔化，软化点为70℃左右</td>
+                    </tr>
+                </table>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >二级指纹</td>
+                        <td>C</td>
+                        <td>80%~90%</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td>6%~9%</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td>4%-40%</td>
+                    </tr>
+                    <tr>
+                        <td>其他</td>
+                        <td>还含有少量的N和S</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        煤沥青中的多环芳烃总量高达39318 mg/kg，其中苯并[a]芘浓度值为1562mg/kg。主要以菲（3环）、荧蒽（4环）、芘（4环）为主，分别占16.79%，18.64%，15.26%。16种优先控制的多环芳烃以低环和中环为主，分别占总量的34.47%和47.95%。氧化态（OXI）和残渣态（RES）重金属含量较高。
+                    </p>
+                </div>
+            </div>
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="母液">
+        <div class="panel-heading">
+            <h3 class="panel-title">母液</h3>
+        </div>
+        <div class="panel-body">
+            <div id="24滴合成过程中产生的母液" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">2,4-滴合成过程中产生的母液</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       先氯代，后缩合工艺生产2,4-滴过程中2,4-滴合成过程中产生的甲苯萃取母液；先缩合，后氯代工艺生产2,4-滴过程中苯氧乙酸合成过程苯氧乙酸钠离心母液。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        高COD，约几万~几十万mg/L；废水中除含有农药和中间体外，还含有有机磷或有机氯、酚、砷、汞等有毒物质以及许多生物难以降解的物质。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >三级指纹</td>
+                        <td>2,4-D</td>
+                        <td>0.1-200 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>2,4-二氯苯酚</td>
+                        <td>0.1-65 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>氯乙酸</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>氯乙酸</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>甲苯</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="2甲4氯酸合成过程产生的母液" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">2甲4氯酸合成过程产生的母液</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       2甲4氯酸合成过程产生的氯化母液；2甲4氯酸合成过程酸化母液酚回收产生的蒸馏残液。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        高COD，约几万~几十万mg/L；含有有机磷或有机氯等成分。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >三级指纹</td>
+                        <td>邻甲酚</td>
+                        <td>0.1-153 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>氯乙酸</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>2甲4氯酸</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="百草枯合成过程产生的母液" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">百草枯合成过程产生的母液</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       氰醇法合成百草枯N-甲基吡啶盐合成釜废液；氰醇法合成百草枯产生的滤液。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        高COD，约几万~几十万mg/L；含有有机磷或有机氯等成分。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >三级指纹</td>
+                        <td>NH4Cl</td>
+                        <td>10 %～15%</td>
+                    </tr>
+                    <tr>
+                        <td>NaCN</td>
+                        <td>2%～3%</td>
+                    </tr>
+                    <tr>
+                        <td>氯甲基吡啶</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>吡啶</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>百草枯</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="苯磺隆合成过程产生的离心母液" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">苯磺隆合成过程产生的离心母液</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       苯磺隆合成离心母液。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        高COD，约几万~几十万mg/L；含有有机磷或有机氯等成分。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="4" style="line-height: 120px;text-align: center;" class="active" >三级指纹</td>
+                        <td>苯磺隆</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>邻甲酸甲酯</td>
+                        <td>1-100 mg/L）</td>
+                    </tr>
+                    <tr>
+                        <td>苯磺酰异氰酸酯</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>二甲苯</td>
+                        <td>0.1-100 mg/L</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="草甘膦母液" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">草甘膦母液</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       甘氨酸法合成草甘膦过程中甲醇回收产生的精馏残液；甘氨酸法生产草甘膦过程中草甘膦母液；IDA法生产草甘膦过程中双甘膦合成母液；IDA法生产草甘膦过程中草甘膦母液；IDA法生产草甘膦过程中IDA合成母液。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>水分含量</td>
+                        <td>70%-99%</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        高COD，约几万~几十万mg/L；废水中除含有农药和中间体外，还含有有机磷或有机氯、酚、砷、汞等有毒物质以及许多生物难以降解的物质。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >三级指纹</td>
+                        <td>氯化钠</td>
+                        <td>12-18%）</td>
+                    </tr>
+                    <tr>
+                        <td>甲醛</td>
+                        <td>1-4%</td>
+                    </tr>
+                    <tr>
+                        <td>甲酸</td>
+                        <td>1.3-1.8%</td>
+                    </tr>
+                    <tr>
+                        <td>草甘膦</td>
+                        <td>0.7%-1.5%</td>
+                    </tr>
+                    <tr>
+                        <td>增甘膦</td>
+                        <td>2~4%</td>
+                    </tr>
+                    <tr>
+                        <td>双甘膦</td>
+                        <td>0.02~0.78%</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+     </div>
+     <div class="panel panel-primary" id="过滤残渣">
+        <div class="panel-heading">
+            <h3 class="panel-title">过滤残渣</h3>
+        </div>
+        <div class="panel-body">
+            <div id="碳碱法生产硼砂过程中硼镁矿碳解过滤产生的硼泥" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">碳碱法生产硼砂过程中硼镁矿碳解过滤产生的硼泥</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        碳碱法生产硼砂过程中，硼镁矿碳解、过滤后产生的残渣。
+                    </p>
+
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>灰白色、黄白色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>粉状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><1%</td>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>呈碱性</td>
+                    </tr>
+
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>大部分是粒径小于1 μm的不均匀小颗粒。</td>
+                    </tr>
+
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/硼镁矿碳解过滤产生的硼泥.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                        <td rowspan="6" style="line-height: 150px;text-align: center;" class="active" >典型成分</td>
+                        <td>MgO</td>
+                        <td>30-45%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>22.5-32.7%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>22.5-32.7%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>2.4-14.6%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td> 2.79-5%</td>
+                    </tr>
+                    <tr>
+                        <td>CaO</td>
+                        <td>1.54-5.9%</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="1" style="line-height: 30px;text-align: center;" class="active" >主要物相</td>
+                        <td>MgCO3</td>
+                        <td>石英(SiO2)和橄榄石(Mg2SiO3)</td>
+                    </tr>
+
+                </table>
+
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >三级指纹</td>
+                        <td>B</td>
+                        <td>51395.79-72914.98 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Na</td>
+                        <td>110994.3-125971.7 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Mg</td>
+                        <td>1492352-1643522 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Al</td>
+                        <td>22469.64-23116.64 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>K</td>
+                        <td>70000-96214.15 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ca</td>
+                        <td>484008.1-662523.9 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Fe</td>
+                        <td>293319.8-464818.4 mg/kg</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="碳化法氧化镁生产过程中溶液离心分离后产生的镁渣" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">碳碱法生产硼砂过程中硼镁矿碳解过滤产生的硼泥</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        碳化法生产氧化镁过程中，碳酸氢镁溶液离心分离后产生的残渣。
+                    </p>
+
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态、半固态</td>
+                    </tr>
+                    <tr>
+                        <td>颜色</td>
+                        <td>灰白色</td>
+                    </tr>
+                    <tr>
+                        <td>形状</td>
+                        <td>颗粒状</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td><5%</td>
+                    </tr>
+                    <tr>
+                        <td>pH</td>
+                        <td>9.87</td>
+                    </tr>
+
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>不规则粗糙熔融结构</td>
+                    </tr>
+
+                </table>
+                <div style="margin-top: 10px;margin-left: 250px;margin-bottom: 30px;">
+                    <img src={% static 'img/溶液离心分离后产生的镁渣.png' %} alt="图片加载失败">
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >二级指纹</td>
+                         <td rowspan="5" style="line-height: 180px;text-align: center;" class="active" >主要成分</td>
+                        <td>CaO</td>
+                        <td>1.54-5.9%</td>
+                    </tr>
+                    <tr>
+                        <td>SiO2</td>
+                        <td>20-30%</td>
+                    </tr>
+                    <tr>
+                        <td>Al2O3</td>
+                        <td>35-14.17%</td>
+                    </tr>
+                    <tr>
+                        <td>MgO</td>
+                        <td>10-28.84%</td>
+                    </tr>
+                    <tr>
+                        <td>Fe2O3</td>
+                        <td>1.54-5.9%</td>
+                    </tr>
+                     <tr>
+                        <td rowspan="1" style="line-height: 30px;text-align: center;" class="active" >主要物相</td>
+                        <td>MgCO3</td>
+                        <td>石英(SiO2)橄榄石(Mg2SiO3)</td>
+                    </tr>
+
+                </table>
+
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;" >
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >三级指纹</td>
+                        <td>B</td>
+                        <td>51395.79-72914.98 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Na</td>
+                        <td>110994.3-125971.7 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Mg</td>
+                        <td>1492352-1643522 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Al</td>
+                        <td>22469.64-23116.64 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>K</td>
+                        <td>70000-96214.15 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ca</td>
+                        <td>484008.1-662523.9 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Fe</td>
+                        <td>293319.8-464818.4 mg/kg</td>
+                    </tr>
+                </table>
+            </div>
+
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="废催化剂">
+        <div class="panel-heading">
+            <h3 class="panel-title">废催化剂</h3>
+        </div>
+        <div class="panel-body">
+            <div id="催化裂化催化剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">催化裂化催化剂</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        生产过程未加入钝镍剂的催化裂化催化剂。除尘系统收集的烟脱滤饼，主要为FCC催化剂细粉。
+                    </p>
+
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.1-10%</td>
+                    </tr>
+                     <tr>
+                        <td>表观形貌</td>
+                        <td>规则的条形、棒状、三角形等。</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       主要成分：Al2O3、Fe2O3、Na2O及少量Ni等占比在80%以上。
+                    </p>
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        特征污染物：Ni、V、Sb等重金属化合物。
+                    </p>
+                </div>
+            </div>
+            <div id="加氢精制废催化剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">加氢精制废催化剂</p>
+                </blockquote>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.1-10%</td>
+                    </tr>
+                     <tr>
+                        <td>表观形貌</td>
+                        <td>规则的条形、棒状、三角形等。</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       主要成分为Al2O3、WO3、NiO、MoO3等
+                    </p>
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        特征污染物为：Ni、Co、Zn等重金属
+                    </p>
+                </div>
+            </div>
+            <div id="废加氢催化剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废加氢催化剂</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                        汽油加氢脱硫、柴油加氢精制、航煤加氢精制。
+                    </p>
+                    <p>
+                        工业使用加氢精制催化剂大多采用Al2O3作载体，活性金属组分主要有Ni、Co、Mo、W的氧化物；加氢裂化催化剂也是采用Al2O3作载体，活性组分为Fe、Co、Ni、Cr、Mo、W的氧化物或硫化物，此外还有贵金属Pt、Pd等元素，工业使用最为广泛的氢化处理催化剂主要组合为Mo-Ni、Mo-Co、W-Ni催化剂。
+                    </p>
+
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.1-10%</td>
+                    </tr>
+                     <tr>
+                        <td>表观形貌</td>
+                        <td>规则的条形、棒状、三角形等。</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       主要成分：Al2O3、WO3、CoO、NiO等；
+                    </p>
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        特征污染物：Ni、Co、Zn等重金属；As、Pb、Cu、Ni等重金属；Ni、V、Cu等重金属
+                    </p>
+                </div>
+            </div>
+            <div id="废重整催化剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">催化裂化催化剂</p>
+                </blockquote>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        组成：
+                    </h4>
+                    <p>
+                        重整催化剂由三部分组成：活性组分（如铂、钯、铱、铑）、助催化剂（如铼、锡）、酸性载体（如含卤素的γ-Al2O3）。
+                    </p>
+
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.1-10%</td>
+                    </tr>
+                     <tr>
+                        <td>表观形貌</td>
+                        <td>规则的条形、棒状、三角形等。</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       主要成分：Al2O3、微量Pt、Re等；
+                    </p>
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        特征污染物：石油烃、As、Cu、Ni、Cr、Hg等重金属。
+                    </p>
+                </div>
+            </div>
+            <div id="废异构化催化剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废异构化催化剂</p>
+                </blockquote>
+
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>固态</td>
+                    </tr>
+                    <tr>
+                        <td>含水率</td>
+                        <td>0.1-10%</td>
+                    </tr>
+                     <tr>
+                        <td>表观形貌</td>
+                        <td>规则的条形、棒状、三角形等。</td>
+                    </tr>
+                </table>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       主要成分：Al2O3、微量Pt、Sn等；
+                    </p>
+                </div>
+                 <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        三级指纹
+                    </h4>
+                    <p>
+                        特征污染物：石油烃
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="废有机溶剂">
+        <div class="panel-heading">
+            <h3 class="panel-title">废有机溶剂</h3>
+        </div>
+        <div class="panel-body">
+            <div id="汽车行业废有机溶剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">汽车行业废有机溶剂</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       长安福特汽车有限公司重庆二工厂汽车制造过程中产生的废有机溶剂。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状或油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性气味</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >二级指纹（有机污染物）</td>
+                        <td>乙酸乙酯</td>
+                        <td> 5000-7929.853 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>正丁醇</td>
+                        <td>5500-6984.248 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>4-甲基-2-戊酮</td>
+                        <td>3000-4031.35 mg/L</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >三级指纹（有机污染物）</td>
+                        <td>乙酸乙酯</td>
+                        <td> 5000-7929.853 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>正丁醇</td>
+                        <td>5500-6984.248 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>4-甲基-2-戊酮</td>
+                        <td>3000-4031.35 mg/L</td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div id="化工行业废有机溶剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">化工行业废有机溶剂</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                      重庆长寿化工有限责任公司化工生产过程中产生的废有机溶剂。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状或油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性气味</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="2" style="line-height: 60px;text-align: center;" class="active" >二级指纹（有机污染物）</td>
+                        <td>聚二乙烯基乙炔</td>
+                        <td>80-85%</td>
+                    </tr>
+                    <tr>
+                        <td>二甲苯</td>
+                        <td>10-15%</td>
+                    </tr>
+
+                </table>
+                 <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="2" style="line-height: 60px;text-align: center;" class="active" >三级指纹（有机污染物）</td>
+                        <td>聚二乙烯基乙炔</td>
+                        <td>80-85%</td>
+                    </tr>
+                    <tr>
+                        <td>二甲苯</td>
+                        <td>10-15%</td>
+                    </tr>
+
+                </table>
+
+
+
+            </div>
+            <div id="电子行业废有机溶剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">电子行业废有机溶剂</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                      鸿富锦精密电子有限公司电子元件生产过程中产生的废有机溶剂。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状或油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性气味</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="9" style="line-height: 270px;text-align: center;" class="active" >二级指纹（有机污染物）</td>
+                        <td>甲苯</td>
+                        <td>2-4.677 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>乙苯</td>
+                        <td>1-2.529 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>1-2.338 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>间二甲苯</td>
+                        <td>2-5.523 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>邻二甲苯</td>
+                        <td>4.134-5 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>均三甲苯</td>
+                        <td>1.5-4.330 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>1-2.338 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>偏三甲苯</td>
+                        <td>2-4.105 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>连三甲苯</td>
+                        <td>1-4.320 mg/L</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="9" style="line-height: 270px;text-align: center;" class="active" >三级指纹（有机污染物）</td>
+                        <td>甲苯</td>
+                        <td>2-4.677 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>乙苯</td>
+                        <td>1-2.529 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>1-2.338 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>间二甲苯</td>
+                        <td>2-5.523 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>邻二甲苯</td>
+                        <td>4.134-5 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>均三甲苯</td>
+                        <td>1.5-4.330 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>1-2.338 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>偏三甲苯</td>
+                        <td>2-4.105 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>连三甲苯</td>
+                        <td>1-4.320 mg/L</td>
+                    </tr>
+                </table>
+
+
+            </div>
+            <div id="涂装行业废有机溶剂" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">涂装行业废有机溶剂</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       涂装过程产生的废有机溶剂。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>水状或油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性气味</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >二级指纹（有机污染物）</td>
+                        <td>甲苯</td>
+                        <td>450-619.856 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>乙苯</td>
+                        <td>500-683.787 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>390-688.004 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>间二甲苯</td>
+                        <td>580-840.383 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>邻二甲苯</td>
+                        <td>280-583.695 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>均三甲苯</td>
+                        <td>90-182.384 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>偏三甲苯</td>
+                        <td>205-330.726 mg/L、478-622.172 mg/L</td>
+                    </tr>
+                </table>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >三级指纹（有机污染物）</td>
+                        <td>甲苯</td>
+                        <td>450-619.856 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>乙苯</td>
+                        <td>500-683.787 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>对二甲苯</td>
+                        <td>390-688.004 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>间二甲苯</td>
+                        <td>580-840.383 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>邻二甲苯</td>
+                        <td>280-583.695 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>均三甲苯</td>
+                        <td>90-182.384 mg/L</td>
+                    </tr>
+                    <tr>
+                        <td>偏三甲苯</td>
+                        <td>205-330.726 mg/L、478-622.172 mg/L</td>
+                    </tr>
+                </table>
+
+
+            </div>
+
+        </div>
+     </div>
+     <div class="panel panel-primary" id="废矿物油">
+        <div class="panel-heading">
+            <h3 class="panel-title">废矿物油</h3>
+        </div>
+        <div class="panel-body">
+            <div id="废淬火油" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废淬火油</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       淬火及废水油水分离过程产生的废淬火油。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性油味</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        废矿物油类中的污染物成分主要来自矿物油的原辅料，成品矿物油一般由基础油（占70%-90%）和添加剂（5%-30%）组成。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="9" style="line-height: 270px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >重金属</td>
+                        <td>Ba</td>
+                        <td>225-384 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>80-171 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>28-31 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >多环芳烃</td>
+                        <td>萘</td>
+                        <td>17.77-55.35 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苊</td>
+                        <td>1.98-9.63mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芴</td>
+                        <td>6.25-21.06 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苯并（a）芘</td>
+                        <td>2.06-3.93mg/k</td>
+                    </tr>
+                    <tr>
+                        <td>苯并（a）蒽</td>
+                        <td>6.46-6.63mg/kg</td>
+                    </tr>
+                        <td>荧蒽</td>
+                        <td>3.87-16.21 mg/kg</td>
+                    </tr>
+
+                </table>
+            </div>
+            <div id="废机油" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废机油</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       在机械、动力、运输等设备的维护和维修中产生的废机油。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性油味</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        废矿物油类中的污染物成分主要来自矿物油的原辅料，成品矿物油一般由基础油（占70%-90%）和添加剂（5%-30%）组成。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="7" style="line-height: 210px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >重金属</td>
+                        <td>Cu</td>
+                        <td>10-75 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>6-12 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>57-139 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>12-48 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Mn</td>
+                        <td>20-58 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2" style="line-height: 60px;text-align: center;" class="active" >多环芳烃</td>
+                        <td>萘</td>
+                        <td>310.8-677.3 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>菲</td>
+                        <td>42.3-131.5 mg/kg</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="废润滑油" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废润滑油</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       机械、机电设备及器材加工制造中产生的废润滑油。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性油味</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                        废矿物油类中的污染物成分主要来自矿物油的原辅料，成品矿物油一般由基础油（占70%-90%）和添加剂（5%-30%）组成。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >三级指纹（重金属）</td>
+                        <td>Cu</td>
+                        <td>1-3 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>9.9-14.29 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>1-6.285 mg/kg</td>
+                    </tr>
+                </table>
+            </div>
+            <div id="废矿物油" style="border: solid 1px;width: 1100px;height: max-content;margin-top: 20px;">
+                <blockquote style="margin-top: 20px; margin-left: 20px;">
+                    <p style="font-weight:bold;">废矿物油</p>
+                </blockquote>
+
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        产生工段
+                    </h4>
+                    <p>
+                       石油炼制过程中的溢出废油或乳剂以及清洗油罐（池）或油件过程中产生的废矿物油。此时产生的废矿物油主要是废重油。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="3" style="line-height: 90px;text-align: center;" class="active" >   一级指纹</td>
+                        <td>物理形态</td>
+                        <td>液态</td>
+                    </tr>
+                    <tr>
+                        <td>表观形貌</td>
+                        <td>油状液态废物</td>
+                    </tr>
+                    <tr>
+                        <td>气味</td>
+                        <td>刺激性油味</td>
+                    </tr>
+                </table>
+                <div style="margin-left: 20px;margin-right: 20px;">
+                    <h4 style="font-weight:bold;">
+                        二级指纹
+                    </h4>
+                    <p>
+                       废矿物油类中的污染物成分主要来自矿物油的原辅料，成品矿物油一般由基础油（占70%-90%）和添加剂（5%-30%）组成。
+                    </p>
+                </div>
+                <table class="table table-bordered" style="margin-left: 20px;width: 1000px;">
+                    <tr>
+                        <td rowspan="11" style="line-height: 330px;text-align: center;" class="active" >三级指纹</td>
+                        <td rowspan="5" style="line-height: 150px;text-align: center;" class="active" >重金属</td>
+                        <td>Cu</td>
+                        <td>220-236.8 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Pb</td>
+                        <td>270-297.3 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Zn</td>
+                        <td>411-428.5 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Ni</td>
+                        <td>10-14.9 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>Cr</td>
+                        <td>20-24.9 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6" style="line-height: 180px;text-align: center;" class="active" >多环芳烃</td>
+                        <td>萘</td>
+                        <td>3200-3605 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苊烯</td>
+                        <td>88-109.3mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>苊</td>
+                        <td>80-100.1 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>芴</td>
+                        <td>1000-1150 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>菲</td>
+                        <td>300-500 mg/kg</td>
+                    </tr>
+                    <tr>
+                        <td>蒽</td>
+                        <td>620-737.1 mg/kg</td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+     </div>
+</div>
+
+{% endblock %}
+
+{% block js %}
+
+{% endblock %}

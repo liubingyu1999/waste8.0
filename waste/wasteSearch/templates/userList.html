@@ -1,0 +1,77 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px" class="clearfix">
+            <a class="btn btn-primary" href="/user/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建用户
+            </a>
+            <div style="float: right;width: 500px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="请输入用户姓名"
+                            value="{{ search_data }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading" >
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                用户列表
+            </div>
+
+            <table class="table table-bordered table-hover">
+                <thead class="table-dark">
+                <tr class="table-primary">
+                    <th>ID</th>
+                    <th>用户名</th>
+                    <th>密码</th>
+                    <th>重置密码</th>
+                    <th>用户类型</th>
+                    <th>用户状态</th>
+                    <th>相关操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for obj in queryset %}
+                    <tr>
+                        <th>{{ obj.id }}</th>
+                        <td>{{ obj.username }}</td>
+                        <td>********</td>
+                        <td>
+                            <a href="/user/{{ obj.id }}/reset/ ">重置密码</a>
+                        </td>
+                        <td>{{ obj.usertype }}</td>
+                        <td>{{ obj.userstate }}</td>
+                        <td>
+                            <a class="btn btn-info btn-xs" href="/user/{{ obj.id }}/edit/">修改</a>
+                            <a class="btn btn-danger btn-xs" href="/user/{{ obj.id }}/delete/">删除</a>
+                        </td>
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="clearfix">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,413 @@
+{% extends 'layout.html' %}
+
+
+
+{% block content %}
+    <div class="container">
+        <div style="margin-bottom: 10px" class="clearfix">
+            <a class="btn btn-success" href="/waste/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建废物
+            </a>
+            <div style="float: right;width: 500px;">
+                <form method="get">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="请输入废物名称"
+                            value="{{ search_data }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">
+                                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        <div style="overflow: auto;">
+        <div class="panel panel-default" style="width: max-content;"  >
+            <div class="panel-heading" >
+                <span class="glyphicon glyphicon-th-list" ></span>
+                废物列表
+            </div>
+
+            <table class="table table-bordered table-hover" >
+
+                <thead class="table-dark">
+
+                <tr class="table-primary">
+                    <th>操作</th>
+                {% for i in labels %}
+                    <th>{{ i }}</th>
+                {% endfor %}
+                </tr>
+
+                </thead>
+                <tbody>
+
+                {% for obj in queryset %}
+                    <tr>
+                        <td>
+                           <a class="btn btn-info btn-xs" href="/waste/{{ obj.dataId }}/edit/">修改</a>
+                           <a class="btn btn-danger btn-xs" href="/waste/{{ obj.dataId }}/delete/">删除</a>
+                        </td>
+                        <td>{{ obj.行业分类 }}</td>
+                        <td>{{ obj.固废名称 }}</td>
+                        <td>{{ obj.别名}}</td>
+                        <td>{{ obj.产生工段 }}</td>
+                        <td>{{ obj.表观形貌 }}</td>
+                        <td>{{ obj.表观形貌关键词}}</td>
+                        <td>{{ obj.物理形态}}</td>
+                        <td>{{ obj.形状}}</td>
+                        <td>{{ obj.颜色}}</td>
+                        <td>{{ obj.气味}}</td>
+                        <td>{{ obj.密度}}</td>
+                        <td>{{ obj.含水率}}</td>
+                        <td>{{ obj.pH}}</td>
+                        <td>{{ obj.含油率}}</td>
+                        <td>{{ obj.COD}}</td>
+                        <td>{{ obj.热值}}</td>
+                        <td>{{ obj.烧失量}}</td>
+                        <td>{{ obj.水分}}</td>
+                        <td>{{ obj.灰分}}</td>
+                        <td>{{ obj.挥发分}}</td>
+                        <td>{{ obj.固定碳}}</td>
+                        <td>{{ obj.C}}</td>
+                        <td>{{ obj.H}}</td>
+                        <td>{{ obj.N}}</td>
+                        <td>{{ obj.O}}</td>
+                        <td>{{ obj.F}}</td>
+                        <td>{{ obj.Na}}</td>
+                        <td>{{ obj.Mg}}</td>
+                        <td>{{ obj.Al}}</td>
+                        <td>{{ obj.Si}}</td>
+                        <td>{{ obj.P}}</td>
+                        <td>{{ obj.S}}</td>
+                        <td>{{ obj.Cl}}</td>
+                        <td>{{ obj.K}}</td>
+                        <td>{{ obj.Ca}}</td>
+                        <td>{{ obj.Ti}}</td>
+                        <td>{{ obj.V}}</td>
+                        <td>{{ obj.Cr}}</td>
+                        <td>{{ obj.Mn}}</td>
+                        <td>{{ obj.Fe}}</td>
+                        <td>{{ obj.Co}}</td>
+                        <td>{{ obj.Ni}}</td>
+                        <td>{{ obj.Cu}}</td>
+                        <td>{{ obj.Zn}}</td>
+                        <td>{{ obj.As}}</td>
+                        <td>{{ obj.Pb}}</td>
+                        <td>{{ obj.Ag}}</td>
+                        <td>{{ obj.Bi}}</td>
+                        <td>{{ obj.Cd}}</td>
+                        <td>{{ obj.Sn}}</td>
+                        <td>{{ obj.Sb}}</td>
+                        <td>{{ obj.I}}</td>
+                        <td>{{ obj.Hg}}</td>
+                        <td>{{ obj.Ba}}</td>
+                        <td>{{ obj.Al2O3}}</td>
+                        <td>{{ obj.MgO}}</td>
+                        <td>{{ obj.P_Cl}}</td>
+                        <td>{{ obj.K2O}}</td>
+                        <td>{{ obj.Na2O}}</td>
+                        <td>{{ obj.Fe2O3}}</td>
+                        <td>{{ obj.SiO2}}</td>
+                        <td>{{ obj.MnO}}</td>
+                        <td>{{ obj.CaO}}</td>
+                        <td>{{ obj.P_S}}</td>
+                        <td>{{ obj.SO3}}</td>
+                        <td>{{ obj.As2O3}}</td>
+                        <td>{{ obj.TiO2}}</td>
+                        <td>{{ obj.Cr2O3}}</td>
+                        <td>{{ obj.CuO}}</td>
+                        <td>{{ obj.ZnO}}</td>
+                        <td>{{ obj.PbO}}</td>
+                        <td>{{ obj.P_F}}</td>
+                        <td>{{ obj.V2O5}}</td>
+                        <td>{{ obj.BaO}}</td>
+                        <td>{{ obj.P2O5}}</td>
+                        <td>{{ obj.SnO2}}</td>
+                        <td>{{ obj.NiO}}</td>
+                        <td>{{ obj.NaCl}}</td>
+                        <td>{{ obj.KCl}}</td>
+                        <td>{{ obj.MgCl2}}</td>
+                        <td>{{ obj.MgOH2}}</td>
+                        <td>{{ obj.AlCl3}}</td>
+                        <td>{{ obj.MnCl2}}</td>
+                        <td>{{ obj.NH4Cl }}</td>
+                        <td>{{ obj.TiCl4}}</td>
+                        <td>{{ obj.FeCl2}}</td>
+                        <td>{{ obj.FeCl3}}</td>
+                        <td>{{ obj.CaCl2}}</td>
+                        <td>{{ obj.CaF2}}</td>
+                        <td>{{ obj.CaSO4}}</td>
+                        <td>{{ obj.CaCO3}}</td>
+                        <td>{{ obj.P_BaO}}</td>
+                        <td>{{ obj.BaSO4}}</td>
+                        <td>{{ obj.BaCO3}}</td>
+                        <td>{{ obj.BaSiO3}}</td>
+                        <td>{{ obj.BaS}}</td>
+                        <td>{{ obj.NaOH}}</td>
+                        <td>{{ obj.辉铜矿}}</td>
+                        <td>{{ obj.黄铜矿}}</td>
+                        <td>{{ obj.铜铁硫化相}}</td>
+                        <td>{{ obj.铁橄榄石}}</td>
+                        <td>{{ obj.磁铁矿}}</td>
+                        <td>{{ obj.钙铁辉石}}</td>
+                        <td>{{ obj.玻璃相}}</td>
+                        <td>{{ obj.石膏}}</td>
+                        <td>{{ obj.方解石}}</td>
+                        <td>{{ obj.石英}}</td>
+                        <td>{{ obj.砷铜矿}}</td>
+                        <td>{{ obj.皓矾}}</td>
+                        <td>{{ obj.六水锌矾}}</td>
+                        <td>{{ obj.氧化锑}}</td>
+                        <td>{{ obj.三氧化二砷}}</td>
+                        <td>{{ obj.五氧化二砷}}</td>
+                        <td>{{ obj.铅绿矾}}</td>
+                        <td>{{ obj.方铅矿}}</td>
+                        <td>{{ obj.铅黄}}</td>
+                        <td>{{ obj.铅}}</td>
+                        <td>{{ obj.密陀僧}}</td>
+                        <td>{{ obj.红锌矿}}</td>
+                        <td>{{ obj.闪锌矿}}</td>
+                        <td>{{ obj.锌}}</td>
+                        <td>{{ obj.纤锌矿}}</td>
+                        <td>{{ obj.冰晶石}}</td>
+                        <td>{{ obj.刚玉}}</td>
+                        <td>{{ obj.β氧化铝}}</td>
+                        <td>{{ obj.钾冰晶石}}</td>
+                        <td>{{ obj.铝}}</td>
+                        <td>{{ obj.锥冰晶石}}</td>
+                        <td>{{ obj.西蒙冰晶石}}</td>
+                        <td>{{ obj.氟铝钙锂石}}</td>
+                        <td>{{ obj.白砷石}}</td>
+                        <td>{{ obj.三水胆矾}}</td>
+                        <td>{{ obj.副雄黄}}</td>
+                        <td>{{ obj.砷华}}</td>
+                        <td>{{ obj.铅矾}}</td>
+                        <td>{{ obj.块黑铅矿}}</td>
+                        <td>{{ obj.四水锌矾}}</td>
+                        <td>{{ obj.硒汞矿}}</td>
+                        <td>{{ obj.尖晶石}}</td>
+                        <td>{{ obj.氮化铝}}</td>
+                        <td>{{ obj.方镁石}}</td>
+                        <td>{{ obj.铜靛矾}}</td>
+                        <td>{{ obj.CuSO4H2O}}</td>
+                        <td>{{ obj.CdSO30_5H2O}}</td>
+                        <td>{{ obj.石盐}}</td>
+                        <td>{{ obj.氟氯铅矿}}</td>
+                        <td>{{ obj.铁白云石}}</td>
+                        <td>{{ obj.钙铝矾}}</td>
+                        <td>{{ obj.氯铅矿}}</td>
+                        <td>{{ obj.T_B}}</td>
+                        <td>{{ obj.T_Na}}</td>
+                        <td>{{ obj.T_Mg}}</td>
+                        <td>{{ obj.T_Al}}</td>
+                        <td>{{ obj.T_K}}</td>
+                        <td>{{ obj.T_Ca}}</td>
+                        <td>{{ obj.T_Fe}}</td>
+                        <td>{{ obj.T_Cu}}</td>
+                        <td>{{ obj.T_Pb}}</td>
+                        <td>{{ obj.T_Zn}}</td>
+                        <td>{{ obj.T_Sn}}</td>
+                        <td>{{ obj.T_Ni}}</td>
+                        <td>{{ obj.T_Co}}</td>
+                        <td>{{ obj.T_Sb}}</td>
+                        <td>{{ obj.T_Hg}}</td>
+                        <td>{{ obj.T_Cd}}</td>
+                        <td>{{ obj.T_Bi}}</td>
+                        <td>{{ obj.T_Cr}}</td>
+                        <td>{{ obj.T_As}}</td>
+                        <td>{{ obj.T_Be}}</td>
+                        <td>{{ obj.T_Ba}}</td>
+                        <td>{{ obj.T_Pd}}</td>
+                        <td>{{ obj.T_Pt}}</td>
+                        <td>{{ obj.T_V}}</td>
+                        <td>{{ obj.T_Mn}}</td>
+                        <td>{{ obj.T_Ti}}</td>
+                        <td>{{ obj.T_Al3 }}</td>
+                        <td>{{ obj.T_SO42 }}</td>
+                        <td>{{ obj.CN}}</td>
+                        <td>{{ obj.T_F}}</td>
+                        <td>{{ obj.萘}}</td>
+                        <td>{{ obj.苊烯}}</td>
+                        <td>{{ obj.苊}}</td>
+                        <td>{{ obj.芴}}</td>
+                        <td>{{ obj.菲}}</td>
+                        <td>{{ obj.蒽}}</td>
+                        <td>{{ obj.荧蒽}}</td>
+                        <td>{{ obj.芘}}</td>
+                        <td>{{ obj.苯并a蒽}}</td>
+                        <td>{{ obj.屈}}</td>
+                        <td>{{ obj.苯并b荧蒽}}</td>
+                        <td>{{ obj.苯并k荧蒽}}</td>
+                        <td>{{ obj.苯并a芘}}</td>
+                        <td>{{ obj.茚苯123_cd芘}}</td>
+                        <td>{{ obj.二苯并a_n蒽}}</td>
+                        <td>{{ obj.苯并ghi北二萘嵌苯}}</td>
+                        <td>{{ obj.乙酸乙酯}}</td>
+                        <td>{{ obj.乙酸丁酯}}</td>
+                        <td>{{ obj.乙酸异戊酯}}</td>
+                        <td>{{ obj.氨基甲酸乙酯}}</td>
+                        <td>{{ obj.邻甲酸甲酯}}</td>
+                        <td>{{ obj.邻甲基苯甲酸}}</td>
+                        <td>{{ obj.丁酸丁酯}}</td>
+                        <td>{{ obj.N_氰基乙酰亚胺甲酯乙酯 }}</td>
+                        <td>{{ obj.T_43甲基3甲亚基氨基苯基丁酸乙酯}}</td>
+                        <td>{{ obj.氯甲酸甲酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二甲酯}}</td>
+                        <td>{{ obj.邻甲基苯甲酸甲酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二乙酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二异丁酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二正丁酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二2甲氧基乙酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二4甲基2戊基酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二2乙氧基乙酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二戊酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二己酯}}</td>
+                        <td>{{ obj.邻苯二甲酸丁基苄基酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二2丁氧基乙酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二环己酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二2乙基己酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二苯酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二正辛酯}}</td>
+                        <td>{{ obj.邻苯二甲酸二壬酯}}</td>
+                        <td>{{ obj.苯}}</td>
+                        <td>{{ obj.甲苯}}</td>
+                        <td>{{ obj.乙苯}}</td>
+                        <td>{{ obj.二甲苯}}</td>
+                        <td>{{ obj.对二甲苯}}</td>
+                        <td>{{ obj.间二甲苯}}</td>
+                        <td>{{ obj.邻二甲苯}}</td>
+                        <td>{{ obj.异丙苯}}</td>
+                        <td>{{ obj.苯乙烯}}</td>
+                        <td>{{ obj.乙烯基甲苯}}</td>
+                        <td>{{ obj.环己烷}}</td>
+                        <td>{{ obj.二氯甲烷}}</td>
+                        <td>{{ obj.二氯乙烷}}</td>
+                        <td>{{ obj.苯酚}}</td>
+                        <td>{{ obj.邻甲酚}}</td>
+                        <td>{{ obj.T_24二氯酚}}</td>
+                        <td>{{ obj.T_25二氯苯酚}}</td>
+                        <td>{{ obj.甲醛}}</td>
+                        <td>{{ obj.间苯氧基苯甲醛}}</td>
+                        <td>{{ obj.甲酸}}</td>
+                        <td>{{ obj.苯氧乙酸 }}</td>
+                        <td>{{ obj.氯乙酸}}</td>
+                        <td>{{ obj.羟基乙酸 }}</td>
+                        <td>{{ obj.T_2甲4氯酸}}</td>
+                        <td>{{ obj.甘氨酸}}</td>
+                        <td>{{ obj.亚磷酸钠}}</td>
+                        <td>{{ obj.甲基草甘膦酸钠盐}}</td>
+                        <td>{{ obj.羟甲基磷酸钠盐}}</td>
+                        <td>{{ obj.T_24二氯苯氧乙酸钠}}</td>
+                        <td>{{ obj.氯甲基吡啶}}</td>
+                        <td>{{ obj.吡啶}}</td>
+                        <td>{{ obj.T_2氯5氯甲基吡啶}}</td>
+                        <td>{{ obj.三氯吡啶醇钠}}</td>
+                        <td>{{ obj.乙基氯化物}}</td>
+                        <td>{{ obj.氯乙酰氯}}</td>
+                        <td>{{ obj.邻苯二胺}}</td>
+                        <td>{{ obj.苯肼}}</td>
+                        <td>{{ obj.脲}}</td>
+                        <td>{{ obj.T_1苯基氨基脲}}</td>
+                        <td>{{ obj.二甲胺}}</td>
+                        <td>{{ obj.T_2氯烟酰胺}}</td>
+                        <td>{{ obj.精胺}}</td>
+                        <td>{{ obj.胺醚}}</td>
+                        <td>{{ obj.乙撑硫脲}}</td>
+                        <td>{{ obj.邻甲基苯基硫脲}}</td>
+                        <td>{{ obj.T_2氯N氯甲基_N26二乙基苯基乙酰胺}}</td>
+                        <td>{{ obj.N_26二乙基苯基甲亚胺}}</td>
+                        <td>{{ obj.丁草胺}}</td>
+                        <td>{{ obj.T_4_3乙基2甲亚基氨基苯基丁酰氯}}</td>
+                        <td>{{ obj.T_25二氯苯胺}}</td>
+                        <td>{{ obj.T_24D}}</td>
+                        <td>{{ obj.草甘膦}}</td>
+                        <td>{{ obj.增甘膦}}</td>
+                        <td>{{ obj.双甘膦}}</td>
+                        <td>{{ obj.西玛津}}</td>
+                        <td>{{ obj.三唑磷}}</td>
+                        <td>{{ obj.烟嘧磺酰氯}}</td>
+                        <td>{{ obj.烟嘧磺胺}}</td>
+                        <td>{{ obj.烟嘧磺隆}}</td>
+                        <td>{{ obj.毒死蜱}}</td>
+                        <td>{{ obj.多菌灵}}</td>
+                        <td>{{ obj.氟乐灵}}</td>
+                        <td>{{ obj.咪鲜胺}}</td>
+                        <td>{{ obj.莠去津}}</td>
+                        <td>{{ obj.百草枯}}</td>
+                        <td>{{ obj.苯磺隆}}</td>
+                        <td>{{ obj.吡虫啉}}</td>
+                        <td>{{ obj.咪唑烷}}</td>
+                        <td>{{ obj.丙环唑}}</td>
+                        <td>{{ obj.代森锰}}</td>
+                        <td>{{ obj.敌百虫}}</td>
+                        <td>{{ obj.啶虫脒}}</td>
+                        <td>{{ obj.麦草畏}}</td>
+                        <td>{{ obj.杀虫单}}</td>
+                        <td>{{ obj.乙草胺}}</td>
+                        <td>{{ obj.溴丙烷}}</td>
+                        <td>{{ obj.四氯化碳}}</td>
+                        <td>{{ obj.丙溴磷}}</td>
+                        <td>{{ obj.对氯三氟甲苯}}</td>
+                        <td>{{ obj.功夫酰氯}}</td>
+                        <td>{{ obj.苄基三乙基氯化铵}}</td>
+                        <td>{{ obj.二氯菊酰氯}}</td>
+                        <td>{{ obj.T_4甲基2肼基苯并骈噻唑}}</td>
+                        <td>{{ obj.苯唑醇}}</td>
+                        <td>{{ obj.二甲硫醚}}</td>
+                        <td>{{ obj.硫酸二甲酯}}</td>
+                        <td>{{ obj.甲醇}}</td>
+                        <td>{{ obj.乙醇}}</td>
+                        <td>{{ obj.辛硫磷}}</td>
+                        <td>{{ obj.T_OO二乙基硫代磷酰氯}}</td>
+                        <td>{{ obj.醋酸}}</td>
+                        <td>{{ obj.醋酸酐}}</td>
+                        <td>{{ obj.丙烯醛}}</td>
+                        <td>{{ obj.丙烯腈}}</td>
+                        <td>{{ obj.环戊二烯}}</td>
+                        <td>{{ obj.L_Ca}}</td>
+                        <td>{{ obj.L_Mg}}</td>
+                        <td>{{ obj.L_Fe}}</td>
+                        <td>{{ obj.L_Cu}}</td>
+                        <td>{{ obj.L_Pb}}</td>
+                        <td>{{ obj.L_Zn}}</td>
+                        <td>{{ obj.L_Ba}}</td>
+                        <td>{{ obj.L_Sn }}</td>
+                        <td>{{ obj.L_Co}}</td>
+                        <td>{{ obj.L_Sb}}</td>
+                        <td>{{ obj.L_Hg}}</td>
+                        <td>{{ obj.L_Cd}}</td>
+                        <td>{{ obj.L_Bi}}</td>
+                        <td>{{ obj.L_Ni}}</td>
+                        <td>{{ obj.L_Cr }}</td>
+                        <td>{{ obj.L_Ag}}</td>
+                        <td>{{ obj.L_As}}</td>
+                        <td>{{ obj.L_Se}}</td>
+                        <td>{{ obj.L_Br}}</td>
+                        <td>{{ obj.L_V}}</td>
+                        <td>{{ obj.L_F}}</td>
+
+
+
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        </div>
+        <div class="clearfix">
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+</div>
+
+
+
+{% endblock %}
+

@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>自定义登陆窗口</title>
+        <link rel="stylesheet" href="{% static 'css/tanchuang.css' %}">
+    </head>
+    <body>
+        <!-- 弹出登陆框按钮 -->
+        <div id="login-header">
+            <a id="adminBtn" href="javascript:void(0)">点击，弹出登陆框</a>
+        </div>
+
+        <!-- 登陆框主体 -->
+        <div id="login" class="login">
+            <!-- 登陆框标题 -->
+            <div id="login-title" class="login-title">
+                登陆会员
+                <span><a id="closeBtn" href="javascript:void(0)">关闭</a></span>
+            </div>
+            <!-- 登陆框表单 -->
+            <div id="login-form">
+                <div class="login-input">
+                    <label>登录名：</label>
+                    <input type="text" placeholder="请输入登录名" class="list-input"/>
+                </div>
+
+                <div class="login-input">
+                    <label>密   码：</label>
+                    <input type="password" placeholder="请输入密码" class="list-input"/>
+                </div>
+            </div>
+            <!-- 登陆框登陆按钮 -->
+            <input type="submit"  id="loginSubmit" value="登陆会员" class="loginSubmit"/>
+        </div>
+
+        <!-- 遮盖层 -->
+        <div id="bg" class="bg">sada</div>
+
+
+        <!-- 插入JS代码 -->
+        <script type="text/javascript">
+            var login=document.getElementById('login');
+            var bg=document.getElementById('bg');
+            // 1.点击"点击，弹出登陆框",弹出登陆窗口和遮盖层
+            var adminBtn=document.getElementById('adminBtn');
+            adminBtn.onclick=function(){
+                login.style.display="block";
+                bg.style.display="block";
+                return false;
+            }
+            // 2.点击"关闭",隐藏登陆窗口和遮盖层
+            var closeBtn=document.getElementById('closeBtn');
+            closeBtn.onclick=function(){
+                login.style.display="none";
+                bg.style.display="none";
+                return false;
+            }
+            bg.addEventListener("click", function(){
+                login.style.display="none";
+                bg.style.display="none";
+                return false;
+            })
+            document.addEventListener("keydown", function(a){
+                if (a.key == "Escape") {
+                    login.style.display="none";
+                    bg.style.display="none";
+                    return false;
+                }
+            })
+
+        </script>
+    </body>
+</html>
