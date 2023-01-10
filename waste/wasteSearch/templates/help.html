@@ -1,1 +1,47 @@
-margin-top: 10px ;
+{% extends 'layout.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/plugins/bootstrap-3.4.1/css/bootstrap.css">
+    <style>
+        body{
+           margin:0px;
+           padding:0px;
+           font-family:sans-serif;
+           background: url(../static/img/help.png);
+           background-repeat:no-repeat ;
+           background-size:100% 100%;
+           background-attachment: fixed;
+           background-position:center center;
+        }
+        .body h4{
+            margin-top: 10px ;
+            text-align: center;
+            color: white;
+        }
+        footer{
+            width: 100%;
+            height: 100px; /* footer的高度一定要是固定值*/
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            background: #333;
+        }
+    </style>
+
+</head>
+<body>
+
+        <div>
+            <div class="jumbotron" style="margin-left: 100px;margin-right: 100px;background-color: #c5c0c0;opacity: 0.9">
+              <h2 style="margin-left: 100px">联系方式： 010-84915187</h2>
+            </div>
+         </div>
+
+</body>
+</html>
+
+{% endblock %}
