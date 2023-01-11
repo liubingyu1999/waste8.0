@@ -79,7 +79,7 @@
 
             <tr>
                 <td rowspan="{{phase_size}}">
-                    <a id="chartsBtn2" href="javascript:void(0)">物象组成 (%)</a>
+                    <a id="chartsBtn2" href="javascript:void(0)">物相组成 (%)</a>
                 </td>
             </tr>    
             {% for k, v in phase_txt.items %}
@@ -181,7 +181,7 @@
         </div>
 
         <div class="panel panel-info">
-            <div class="panel-heading">物象组成</div>
+            <div class="panel-heading">物相组成</div>
             <div class="panel-body">
                 <div class="btn-group" role="group" aria-label="..." style="float:right">
                     <button type="button" class="btn btn-primary" id="object_button3" style="z-index: 99"
@@ -521,7 +521,7 @@
     option && myChart.setOption(option);
 </script>
 
-{# 渲染初始物象组成 根据按钮变换视图 #}
+{# 渲染初始物相组成 根据按钮变换视图 #}
 <script type="text/javascript">
     var chartDom_object = document.getElementById('object');
     var myChart_object = echarts.init(chartDom_object);
@@ -572,7 +572,7 @@
                 }]
             }],
             title: {
-                text: '物象组成',
+                text: '物相组成',
                 left: 'center'
             },
             tooltip: {
@@ -600,7 +600,7 @@
                 height: 20
             }],
             series: [{
-                name: '物象含量范围',
+                name: '物相含量范围',
                 type: 'boxplot',
                 datasetId: 'phaseComposition',
                 itemStyle: {
@@ -1265,7 +1265,7 @@
         option && myChart.setOption(option);
 
     }
-    //画物象组成图
+    //画物相组成图
     function create_object(num) {
         var myChart_object = echarts.getInstanceByDom(document.getElementById("object"));
         if (myChart_object == null) {
@@ -1326,7 +1326,7 @@
                     }]
                 }],
                 title: {
-                    text: '物象组成',
+                    text: '物相组成',
                     left: 'center'
                 },
                 tooltip: {
@@ -1354,7 +1354,7 @@
                     height: 20
                 }],
                 series: [{
-                    name: '物象含量范围',
+                    name: '物相含量范围',
                     type: 'boxplot',
                     datasetId: 'phaseComposition',
                     itemStyle: {
