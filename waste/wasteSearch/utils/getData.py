@@ -385,6 +385,7 @@ def getAllRange(name, group):
     allRange = {}
     for obj in queryset:
         obj_dict = obj.__dict__
+
         for item in group:
             modelName = verboseName2name[item]
             itemName = item.replace("T ", "").replace("L ", "")
@@ -393,6 +394,8 @@ def getAllRange(name, group):
                     allRange[itemName] = []
                 if '-' in obj_dict[modelName]:
                     s, l = obj_dict[modelName].split('-', 1)
+                    if (len(s) == 0) or (len(l) == 0):
+                        continue
                     allRange[itemName].append(float(s))
                     allRange[itemName].append(float(l))
                 elif (obj_dict[modelName][0] == '≤') or (obj_dict[modelName][0] =='<'):
